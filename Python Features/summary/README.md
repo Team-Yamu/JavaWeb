@@ -30,6 +30,14 @@ $ python main.py {link} {argv}
 "movies" : String[]
 ```
 
+---
+## Json 내부 내용 설명
+keyword : 해당 뉴스의 키워드들을 나열한 리스트입니다
+summary : 해당 뉴스의 요약본입니다
+publish_date : 해당 뉴스가 쓰여진 날짜입니다.
+text : 해당 뉴스의 전문입니다.
+top_image : 해당 뉴스이 최상단 이미지 링크입니다.
+movies : 해당 뉴스에 내포되어있는 모든 비디오 링크입니다.
 
 ### argv
       
