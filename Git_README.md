@@ -19,7 +19,7 @@
 >   - dev는 master에서 파생된 개발용 Branch
 >   - master에 Merge하기 위해서는 반드시 Pull Request를 한다.
 >   - master로 Merge를 할 수 있는 Branch는 dev 뿐이다.
->   - Feature Branch는 dev에서 기능 단위로 개발하기 위해서 사용한다.
+>   - feature Branch는 dev에서 기능 단위로 개발하기 위해서 사용한다.
 
 ## Feature Branch 이름 규칙
 >- feature/{기능 요약}
