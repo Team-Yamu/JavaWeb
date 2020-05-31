@@ -42,7 +42,7 @@ class CNewsPaper3k:
         self._setTopImage()
         self._setMovies()
 
-        requests.post(url=url, json=json.dumps([self.dictionary], cls=DjangoJSONEncoder))
+        requests.post(url=url, json=json.dumps(self.dictionary, cls=DjangoJSONEncoder))
 
     def print(self):
         self._setKeyword()
@@ -51,7 +51,7 @@ class CNewsPaper3k:
         self._setArticleText()
         self._setTopImage()
         self._setMovies()
-        print(json.dumps([self.dictionary], cls=DjangoJSONEncoder))
+        print(json.dumps(self.dictionary, cls=DjangoJSONEncoder))
 
     def save(self, file_name):
         self._setKeyword()
@@ -60,7 +60,7 @@ class CNewsPaper3k:
         self._setArticleText()
         self._setTopImage()
         self._setMovies()
-        data = json.dumps([self.dictionary], cls=DjangoJSONEncoder)
+        data = json.dumps(self.dictionary, cls=DjangoJSONEncoder)
         f = open(f"{file_name}.json", 'w')
         f.write(data)
         f.close()
