@@ -10,6 +10,7 @@
 2. newspaper3k
 3. requests
 4. django
+5. bs4
 
 ### 폴더 설명
 
