@@ -35,13 +35,13 @@ class CNewsPaper3k:
         self.dictionary['movies'] = self.article.movies
 
     def post(self, url):
-        requests.post(url=url, json=json.dumps(self.dictionary, cls=DjangoJSONEncoder))
+        requests.post(url=url, json=json.dumps(self.dictionary, cls=DjangoJSONEncoder, ensure_ascii=False))
 
     def print(self):
-        print(json.dumps(self.dictionary, cls=DjangoJSONEncoder))
+        print(json.dumps(self.dictionary, cls=DjangoJSONEncoder, ensure_ascii=False))
 
     def save(self, file_name):
         data = json.dumps(self.dictionary, cls=DjangoJSONEncoder)
-        f = open(f"{file_name}.json", 'w')
+        f = open(f"{file_name}.json", 'w', encoding='UTF-8-sig')
         f.write(data)
         f.close()
