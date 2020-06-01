@@ -8,12 +8,18 @@ if __name__ == '__main__':
     parse.add_argument("-save", help="save to json", required=False, default=False)
     parse.add_argument("-print", help="print to json", required=False, default=True)
     parse.add_argument("-post", help="post to url", required=False, default=False)
+    parse.add_argument('-ss', action='store_true')
+    parse.add_argument('-soao', action='store_true')
 
     args = parse.parse_args()
 
     jnltk = CJsonNLTK(args.target)
-    jnltk.setDefinition()
-    jnltk.setSynonymsAntonyms()
+
+    if args.ss:
+        jnltk.setDefinition()
+
+    if args.soao:
+        jnltk.setSynonymsAntonyms()
 
     if args.save:
         jnltk.save2Json(args.save)
