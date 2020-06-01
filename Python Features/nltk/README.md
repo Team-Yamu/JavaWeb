@@ -36,6 +36,8 @@ synonyms : 리스트 형태의 비슷한 단어의 모음입니다.
 
 antonyms : 리스트 형태의 반대의 의미를 가진 단어의 모음입니다.
 
+[ !! synonyms 와 antonyms 는 한 묶음 입니다. !! ]
+
 
 
 ### argv
@@ -46,8 +48,27 @@ antonyms : 리스트 형태의 반대의 의미를 가진 단어의 모음입니
       -save={json_file_name}
       Default: False
       Exp : Save to the Json format in main.py folder
+            main.py 의 위치에 json 파일을 저장합니다.
       
       -post={http://link_here}
       Default: False
       Exp : Post the json th link
+            json 파일을 해당 링크로 post합니다.
       
+      -ss
+        Set Synset
+        Synset를 json 파일에 추가합니다.
+      
+      -soao 
+        Set Synonyms & Antonyms
+        Synonyms 와 Antonyms를 json 파일에 추가합니다.
+      
+      
+```bash
+# Example
+
+$ python main.py hello -ss -soao 
+$ python main.py hello -ss
+$ python main.py hello -soao
+```
+    
