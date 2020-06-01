@@ -4,12 +4,46 @@
 import nltk
 import json
 import requests
+import re
+from urllib import parse
+from bs4 import BeautifulSoup
+
+
+class dictionary:
+    def __init__(self, text):
+        self.text = text
+
+
+    def en2kr(self):
+        self.text = self.text.replace("ﬂ", "fl")
+        session = requests.Session()
+        header = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5)\
+                    AppleWebKit 537.36 (KHTML, like Gecko) Chrome",
+                  "Accept": "text/html,application/xhtml+xml,application/xml;\
+                    q=0.9,imgwebp,*/*;q=0.8"}
+
+        encText = parse.quote(self.text)
+        url = "https://dic.daum.net/search.do?q=" + encText
+        req = session.get(url, headers=header)
+        bs0bj = BeautifulSoup(req.text, "html.parser")
+
+        try:
+            box = bs0bj.find("div", class_="cleanword_type kuek_type")
+            box = box.find('ul', class_="list_search")
+            box = str(box.find_all("span", class_="txt_search"))
+            box = re.sub('<.+?>', '', box, 0).strip()
+            box = box.replace(" ", "").replace("[", "").replace("]", "").replace(",", " ")
+            box = box.split(" ")
+            return box
+
+        except AttributeError:
+            return None
 
 
 class CJsonNLTK:
     def __init__(self, target: str):
         self.target = target
-        self.dictionary = {'target': self.target}
+        self.dictionary = {'target': self.target, 'target_trans': dictionary(text=self.target).en2kr()}
 
     def setDefinition(self) -> None:
         """
@@ -52,7 +86,7 @@ class CJsonNLTK:
         :param file_name: 저장할 파일 이름
         :return: none
         """
-        with open(f'./{file_name}.json', 'w') as f:
+        with open(f'./{file_name}.json', 'w', encoding='UTF-8-sig') as f:
             json.dump(self.dictionary, f)
 
     def print2Json(self) -> None:
@@ -60,7 +94,7 @@ class CJsonNLTK:
         dictionary 형식을 json 형식으로 출력합니다. (개행 없음)
         :return:
         """
-        print(json.dumps(self.dictionary))
+        print(json.dumps(self.dictionary, ensure_ascii=False))
 
     def postJson(self, url: str) -> None:
         """
@@ -68,5 +102,5 @@ class CJsonNLTK:
         :param url: target url
         :return: none
         """
-        req = requests.post(url=url, json=self.dictionary)
+        req = requests.post(url=url, data=json.dumps(self.dictionary, ensure_ascii=False))
         print(req.status_code)
