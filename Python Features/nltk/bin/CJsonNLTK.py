@@ -87,7 +87,7 @@ class CJsonNLTK:
         :return: none
         """
         with open(f'./{file_name}.json', 'w', encoding='UTF-8-sig') as f:
-            json.dump(self.dictionary, f)
+            json.dump(self.dictionary, f, ensure_ascii=False)
 
     def print2Json(self) -> None:
         """
