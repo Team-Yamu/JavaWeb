@@ -7,59 +7,40 @@ from django.core.serializers.json import DjangoJSONEncoder
 class CNewsPaper3k:
     def __init__(self, url, language='en'):
         if language is not None:
-            self._article = Article(url=url, language=language)
+            self.article = Article(url=url, language=language)
         else:
-            self._article = Article(url=url)
+            self.article = Article(url=url)
 
-        self._article.download()
-        self._article.parse()
-        self._article.nlp()
+        self.article.download()
+        self.article.parse()
+        self.article.nlp()
         self.dictionary = {}
 
-    def _setKeyword(self) -> None:
-        self.dictionary['keyword'] = self._article.keywords
+    def setKeyword(self) -> None:
+        self.dictionary['keyword'] = self.article.keywords
 
-    def _setSummary(self) -> None:
-        self.dictionary['summary'] = self._article.summary
+    def setSummary(self) -> None:
+        self.dictionary['summary'] = self.article.summary
 
-    def _setPublishDate(self) -> None:
-        self.dictionary['publish_date'] = self._article.publish_date
+    def setPublishDate(self) -> None:
+        self.dictionary['publish_date'] = self.article.publish_date
 
-    def _setArticleText(self) -> None:
-        self.dictionary['text'] = self._article.text
+    def setArticleText(self) -> None:
+        self.dictionary['text'] = self.article.text
 
-    def _setTopImage(self) -> None:
-        self.dictionary['top_image'] = self._article.top_image
+    def setTopImage(self) -> None:
+        self.dictionary['top_image'] = self.article.top_image
 
-    def _setMovies(self) -> None:
-        self.dictionary['movies'] = self._article.movies
+    def setMovies(self) -> None:
+        self.dictionary['movies'] = self.article.movies
 
     def post(self, url):
-        self._setKeyword()
-        self._setSummary()
-        self._setPublishDate()
-        self._setArticleText()
-        self._setTopImage()
-        self._setMovies()
-
         requests.post(url=url, json=json.dumps(self.dictionary, cls=DjangoJSONEncoder))
 
     def print(self):
-        self._setKeyword()
-        self._setSummary()
-        self._setPublishDate()
-        self._setArticleText()
-        self._setTopImage()
-        self._setMovies()
         print(json.dumps(self.dictionary, cls=DjangoJSONEncoder))
 
     def save(self, file_name):
-        self._setKeyword()
-        self._setSummary()
-        self._setPublishDate()
-        self._setArticleText()
-        self._setTopImage()
-        self._setMovies()
         data = json.dumps(self.dictionary, cls=DjangoJSONEncoder)
         f = open(f"{file_name}.json", 'w')
         f.write(data)
