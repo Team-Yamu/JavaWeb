@@ -26,7 +26,7 @@ class CNewsPaper3k:
         self.dictionary['publish_date'] = self.article.publish_date
 
     def setArticleText(self) -> None:
-        self.dictionary['text'] = self.article.text
+        self.dictionary['text'] = self.article.text.replace("\n", "").replace("\t", "").replace("\r", "")
 
     def setTopImage(self) -> None:
         self.dictionary['top_image'] = self.article.top_image
