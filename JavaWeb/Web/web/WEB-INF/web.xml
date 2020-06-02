@@ -65,4 +65,13 @@
         <servlet-name>testFrontController</servlet-name>
         <url-pattern>*.ts</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>testFrontController2</servlet-name>
+        <servlet-class>net.__test2.action.controller.testFrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>testFrontController2</servlet-name>
+        <url-pattern>*.ts2</url-pattern>
+    </servlet-mapping>
 </web-app>

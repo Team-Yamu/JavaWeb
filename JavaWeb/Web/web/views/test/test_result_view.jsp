@@ -8,14 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%
-    String str = (String) request.getAttribute("testData");
+    String testData = (String) request.getAttribute("testData");
+    List testList = (List)request.getAttribute("testList");
 %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<%=str%>
-adsfdsaf
+<%=testData%><br><br>
+<%
+    if(testList != null)
+    {
+        for (Object item: testList)
+        {
+%>
+            <%=item%><br>
+<%
+        }
+    }
+%>
 </body>
 </html>
