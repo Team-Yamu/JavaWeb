@@ -67,6 +67,7 @@ class CJsonNLTK:
             for e in synset.examples():
                 examples.append(e)
             self.dictionary['synsets'][i]['examples'] = list(set(examples))
+        self.dictionary['synsets']['pages'] = i
 
     def setSynonymsAntonyms(self) -> None:
         """
