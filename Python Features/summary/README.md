@@ -22,7 +22,7 @@ $ python main.py {link} {argv}
 ```
 ## Json Format
 ```java
-"hex" : String
+"hash" : String
 "keyword" : String[]
 "summary" : String
 "publish_date" : String
@@ -37,7 +37,7 @@ $ python main.py {link} {argv}
 
 ####기 제공 
 
-hex : url 을 인코딩 후 sha256로 암호화하여 String 으로 리턴합니다.
+hash : url 을 인코딩 후 sha256로 암호화하여 String 으로 리턴합니다.
 
 ---
 
