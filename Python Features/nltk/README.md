@@ -79,5 +79,6 @@ antonyms : 리스트 형태의 반대의 의미를 가진 단어의 모음입니
 $ python main.py hello -ss -soao 
 $ python main.py hello -ss
 $ python main.py hello -soao
+$ python main.py hello
 ```
     
