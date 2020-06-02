@@ -2,19 +2,26 @@ from newspaper import Article
 import json
 import requests
 from django.core.serializers.json import DjangoJSONEncoder
+import hashlib
 
 
 class CNewsPaper3k:
-    def __init__(self, url, language='en'):
+    def __init__(self, url: str, language='en'):
         if language is not None:
             self.article = Article(url=url, language=language)
         else:
             self.article = Article(url=url)
-
         self.article.download()
         self.article.parse()
         self.article.nlp()
-        self.dictionary = {}
+
+        # HASHING URL
+        _sha256 = hashlib.sha256()
+        _sha256.update(url.encode())
+        self._hash = _sha256.hexdigest()
+        # HASHING DONE
+
+        self.dictionary = {'hash': self._hash}
 
     def setKeyword(self) -> None:
         self.dictionary['keyword'] = self.article.keywords
@@ -40,8 +47,7 @@ class CNewsPaper3k:
     def print(self):
         print(json.dumps(self.dictionary, cls=DjangoJSONEncoder, ensure_ascii=False))
 
-    def save(self, file_name):
-        data = json.dumps(self.dictionary, cls=DjangoJSONEncoder)
-        f = open(f"{file_name}.json", 'w', encoding='UTF-8-sig')
-        f.write(data)
+    def save(self, text):
+        f = open(f"{text}_{self._hash}.json", 'w', encoding='UTF-8-sig')
+        f.write(json.dumps(self.dictionary, cls=DjangoJSONEncoder, ensure_ascii=False))
         f.close()

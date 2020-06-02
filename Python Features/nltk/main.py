@@ -32,4 +32,3 @@ if __name__ == '__main__':
     if args.print:
         jnltk.print2Json()
         exit(1)
-

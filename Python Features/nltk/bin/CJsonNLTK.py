@@ -7,7 +7,7 @@ import requests
 import re
 from urllib import parse
 from bs4 import BeautifulSoup
-
+import hashlib
 
 class dictionary:
     def __init__(self, text):
@@ -43,7 +43,12 @@ class dictionary:
 class CJsonNLTK:
     def __init__(self, target: str):
         self.target = target
-        self.dictionary = {'target': self.target, 'target_trans': dictionary(text=self.target).en2kr()}
+        self.hash = hashlib.sha256()
+        self.hash.update(target.encode())
+        self.hash = self.hash.hexdigest()
+
+        self.dictionary = {'target': self.target, 'target_trans': dictionary(text=self.target).en2kr(),
+                           'hash': self.hash}
 
     def setDefinition(self) -> None:
         """
@@ -86,7 +91,7 @@ class CJsonNLTK:
         :param file_name: 저장할 파일 이름
         :return: none
         """
-        with open(f'./{file_name}.json', 'w', encoding='UTF-8-sig') as f:
+        with open(f'./{file_name}_{self.hash}.json', 'w', encoding='UTF-8-sig') as f:
             json.dump(self.dictionary, f, ensure_ascii=False)
 
     def print2Json(self) -> None:

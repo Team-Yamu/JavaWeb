@@ -4,7 +4,7 @@ import argparse
 if __name__ == '__main__':
     parse = argparse.ArgumentParser()
     parse.add_argument("target", help="link in here", type=str)
-    parse.add_argument("-save", help="save to json", required=False, default=False)
+    parse.add_argument("-save", help="save to json", required=False, default=True)
     parse.add_argument("-print", help="print to json", required=False, default=True)
     parse.add_argument("-post", help="post to url", required=False, default=False)
 
