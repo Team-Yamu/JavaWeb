@@ -31,14 +31,15 @@ public class testDao
         }
     }
 
-    public boolean setInsertTest(testBean bean) throws Exception
+    public boolean setInsertNameAndMean(testBean bean) throws Exception
     {
-        String sql = "insert into word(name) values(?)";
+        String sql = "insert into word(name,mean) values(?,?)";
 
         try
         {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1,bean.getName());
+            pstmt.setString(2,bean.getMean());
             pstmt.executeUpdate();
             return true;
         }
@@ -50,7 +51,7 @@ public class testDao
         return false;
     }
 
-    public testBean getNameData(testBean bean) throws Exception
+    public testBean getSelectName(testBean bean) throws Exception
     {
         String board_sql = "select name from word where name=?";
 

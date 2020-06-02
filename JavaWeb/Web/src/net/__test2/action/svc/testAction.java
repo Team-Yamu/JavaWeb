@@ -27,8 +27,9 @@ public class testAction implements Action
 
         consoleCommand cmd = new consoleCommand();
 
-        String word = "hi";
-        String command = cmd.inputCommand(" cd D:\\GitHubRepo\\JsonNLTK && d: && python main.py "+word);
+        String word = (String) request.getParameter("word");
+
+        String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py "+word);
         BufferedReader resultBuffer = cmd.execCommand(command);
 
         try
@@ -38,16 +39,32 @@ public class testAction implements Action
             JSONObject jsonObject = (JSONObject) parser.parse(resultBuffer);
             String name = (String) jsonObject.get("target");
 
-            JSONArray synonyms = (JSONArray) jsonObject.get("synonyms");
-            Iterator<String> iterator = synonyms.iterator();
-            List synonyms_word = new ArrayList();
+            JSONArray target_trans = (JSONArray) jsonObject.get("target_trans");
+            Iterator<String> iterator = target_trans.iterator();
+            List target_trans_word = new ArrayList();
             while (iterator.hasNext())
             {
-                synonyms_word.add(iterator.next());
+                target_trans_word.add(iterator.next());
             }
 
+            String mean = "";
+
+            for(int i = 0; i<target_trans_word.size();i++)
+            {
+                mean += (String) target_trans_word.get(i);
+                if(target_trans_word.size()-1 != i)
+                {
+                     mean += ",";
+                }
+            }
+
+            bean.setName(name);
+            bean.setMean(mean);
+
+            dao.setInsertNameAndMean(bean);
+
             request.setAttribute("testData",name);
-            request.setAttribute("testList",synonyms_word);
+            request.setAttribute("testList",target_trans_word);
         }
         catch (Exception ex)
         {
