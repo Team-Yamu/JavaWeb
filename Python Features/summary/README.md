@@ -22,6 +22,7 @@ $ python main.py {link} {argv}
 ```
 ## Json Format
 ```java
+"hex" : String
 "keyword" : String[]
 "summary" : String
 "publish_date" : String
@@ -32,6 +33,16 @@ $ python main.py {link} {argv}
 
 ---
 ## Json 내부 내용 설명
+
+
+####기 제공 
+
+hex : url 을 인코딩 후 sha256로 암호화하여 String 으로 리턴합니다.
+
+---
+
+####선택 제공
+
 keyword : 해당 뉴스의 키워드들을 나열한 리스트입니다
 
 summary : 해당 뉴스의 요약본입니다
@@ -44,18 +55,19 @@ top_image : 해당 뉴스이 최상단 이미지 링크입니다.
 
 movies : 해당 뉴스에 내포되어있는 모든 비디오 링크입니다.
 
+---
 ### argv
       
       no argv
       print the Json
       
-      -save={json_file_name}
-      Default: False
-      Exp : Save to the Json format in main.py folder
+      -save={title}
+        -> title_{sha256}.json
+       Exp : link를 sha256으로 암호화하여 해당 암호화된 값을 가지는 .json 파일을 만듭니다.
       
       -post={http://link_here}
-      Default: False
       Exp : Post the json th link
+            json 파일을 해당 링크로 post합니다.
       
       -k : 키워드를 json 파일에 추가합니다
       
