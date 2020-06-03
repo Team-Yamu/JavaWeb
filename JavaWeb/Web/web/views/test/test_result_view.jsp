@@ -28,5 +28,6 @@
         }
     }
 %>
+<a href="/TestInput.ts3">입력으로 이동</a>
 </body>
 </html>
