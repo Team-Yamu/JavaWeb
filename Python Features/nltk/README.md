@@ -1,6 +1,11 @@
 # README
 
-## NLTK Result -> json format
+
+# T I P
+
+1. 단어 자체의 오타가 있는지 확인하는 방법은 -ss 인자를 주어서 synsets 내부 pages가 0: int 이면 오타가 됩니다.
+
+---
 
 ### Req
 ```bash
