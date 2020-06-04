@@ -68,6 +68,8 @@ movies : 해당 뉴스에 내포되어있는 모든 비디오 링크입니다.
       -post={http://link_here}
       Exp : Post the json th link
             json 파일을 해당 링크로 post합니다.
+            
+      -all : 모든 파라미터를 추가합니다.
       
       -k : 키워드를 json 파일에 추가합니다
       

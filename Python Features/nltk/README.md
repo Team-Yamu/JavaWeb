@@ -76,6 +76,9 @@ antonyms : 리스트 형태의 반대의 의미를 가진 단어의 모음입니
       -soao 
         Set Synonyms & Antonyms
         Synonyms 와 Antonyms를 json 파일에 추가합니다.
+        
+       -all
+        set all args
       
       
 ```bash
