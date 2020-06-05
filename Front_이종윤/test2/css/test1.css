@@ -1,0 +1,125 @@
+body
+{
+    margin:0;
+}
+
+.header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    height: 30px;
+    padding: 1rem;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+#login-menu li
+{
+    font-size: 18px;
+}
+
+.logo
+{
+    font-size: 30PX;
+    font-weight: bold;    
+}
+
+.dropbtn {
+    background-color: #008cff;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin : 0px 0px 0px 40px
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: -60px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bolder;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #54affa;}
+
+#login-menu
+{
+    display: inline-block;
+    padding : 0;
+}
+
+#login-menu li
+{
+    display: inline-block;
+    padding : 5px;
+}
+#login-menu li a
+{
+    color: #008cff;
+    font-weight: bold;    
+}
+a
+{
+    text-decoration-line: none;
+}
+
+li
+{
+    list-style-type: none;
+}
+
+#body-view
+{
+    width: 60%;
+    min-height:800px;
+    background-color: rgb(255, 255, 255);
+    margin: 100px auto 50px auto;
+    box-shadow: 0px 0px 8px gray;
+    min-width: 350px;
+    padding :30px 0px;
+}
+.buttons-middle button:hover
+{
+    background-color: #54affa;
+}
+.buttons-middle button
+{
+    font-weight: initial;
+    margin: 0px 10px;
+    box-shadow: 3px 3px 3px rgb(192, 192, 192);
+}
+
+.buttons-middle
+{
+    margin : 30px auto;
+    padding: 30px;
+    width: 210px;
+}

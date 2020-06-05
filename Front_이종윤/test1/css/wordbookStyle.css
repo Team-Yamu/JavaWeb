@@ -18,28 +18,6 @@
     transition: none;
 }
 
-#wordbooks
-{
-    white-space:nowrap;
-    overflow-x:scroll;
-}
-
-#wordbooks::-webkit-scrollbar {
-    width: 6px;
-    height: 10px;
-}
-#wordbooks::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-#wordbooks::-webkit-scrollbar-thumb {
-    border-radius: 7px;
-    background-color: rgb(236, 236, 236);
-}
-#wordbooks::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-}
-
 #wordbook_p_1
 {
     background-color: #0018A8;
@@ -57,6 +35,28 @@
     background-color: #02C3F4;
 }
 
+#wordbooks
+{
+    white-space:nowrap;
+    overflow-x:scroll;
+}
+
+#wordbooks::-webkit-scrollbar {
+    width: 6px;
+    height: 15px;
+}
+#wordbooks::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+#wordbooks::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: rgb(236, 236, 236);
+}
+#wordbooks::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
 #wordbook_list
 {
     width: 90%;
@@ -64,19 +64,19 @@
     margin: 0;
 }
 
-#wordbook_list ol
+#wordbook_list li
 {
     display: inline-block;
     padding: 0px 30px;
 }
 
-#wordbook_list ol:hover div
+#wordbook_list li:hover div
 {
     height: 430px;
     width: 310px;
 }
 
-#wordbook_list ol div
+#wordbook_list li div
 {
     color:white;
     font-size: 30px;
@@ -228,7 +228,6 @@
     {
         position: fixed;
         background-color: rgb(255, 255, 255);
-        display:block;
         width:100%;
         height:100%;
         top:0px;
