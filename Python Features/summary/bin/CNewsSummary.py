@@ -3,7 +3,7 @@ import json
 import requests
 from django.core.serializers.json import DjangoJSONEncoder
 import hashlib
-
+import base64
 
 class CNewsPaper3k:
     def __init__(self, url: str, language='en'):
@@ -36,7 +36,10 @@ class CNewsPaper3k:
         self.dictionary['text'] = self.article.text.replace("\n", "").replace("\t", "").replace("\r", "")
 
     def setTopImage(self) -> None:
-        self.dictionary['top_image'] = self.article.top_image
+        base64_bytes = base64.b64encode(requests.get(self.article.top_image).content)
+        base64_string = base64_bytes.decode('utf-8')
+        raw_data = {"base64_top_img": base64_string}
+        self.dictionary['top_image'] = raw_data
 
     def setMovies(self) -> None:
         self.dictionary['movies'] = self.article.movies
