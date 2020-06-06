@@ -14,10 +14,11 @@ public class UserListAction implements Action
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        var userdao = new UserDAO();
+        var userDAO = new UserDAO();
+        var forward = new ActionForward();
         try
         {
-            List userList = userdao.getAllUserList();
+            List userList = userDAO.getAllUserList();
 
             request.setAttribute("userList", userList);
         }
@@ -28,10 +29,8 @@ public class UserListAction implements Action
         finally
         {
             // userdao.con.close();
-            var forward = new ActionForward();
             forward.setRedirect(false);
             forward.setPath("./views/loginpage/userInfo.jsp");
-
             return forward;
         }
     }

@@ -1,6 +1,17 @@
 <!--로그인 폼 페이지(로그인 정보를 입력하는 페이지)-->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    if (session.getAttribute("id") != null)
+    {
+%>
+        <script>
+            location.href="./views/loginpage/loginpage.jsp";
+        </script>
+<%
+    }
+%>
+
 <html>
 <head>
     <title>Login</title>
@@ -11,7 +22,7 @@
         <table border="1">
             <tr>
                 <td colspan="2" align="center">
-                    <b><font size="5">로그인 페이지</font></b>
+                    <b><font size="5">로그인</font></b>
                 </td>
             </tr>
             <tr>
