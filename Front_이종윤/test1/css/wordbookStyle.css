@@ -1,0 +1,245 @@
+#header_logo
+{
+    position: fixed;
+    text-align: center;
+    height : 100px;
+    width: 100%;
+    background-color: white;
+    line-height: 100px;
+
+    left: 0px;
+    top:0px;
+
+    box-shadow: 1px 1px 5px gray;
+}
+#header_logo a
+{
+    font-size: 40px;
+    transition: none;
+}
+
+#wordbook_p_1
+{
+    background-color: #0018A8;
+}
+#wordbook_p_2
+{
+    background-color: #0283F4;
+}
+#wordbook_p_3
+{
+    background-color: #0158A6;
+}
+#wordbook_p_4
+{
+    background-color: #02C3F4;
+}
+
+#wordbooks
+{
+    white-space:nowrap;
+    overflow-x:scroll;
+}
+
+#wordbooks::-webkit-scrollbar {
+    width: 6px;
+    height: 15px;
+}
+#wordbooks::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+#wordbooks::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: rgb(236, 236, 236);
+}
+#wordbooks::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+#wordbook_list
+{
+    width: 90%;
+    height: 470px;
+    margin: 0;
+}
+
+#wordbook_list li
+{
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+#wordbook_list li:hover div
+{
+    height: 430px;
+    width: 310px;
+}
+
+#wordbook_list li div
+{
+    color:white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 400px;
+
+    border-radius: 20px;
+    height: 400px;
+    width: 280px;
+    
+    box-shadow: 1px 0px 1px gray;
+    transition: 0.5s;
+}
+
+#side_menu_list
+{
+    position:fixed;
+    height: 100%;
+    width: 200px;
+    background-color: white;
+    box-shadow: 1px 0px 10px gray;
+    left:-200px;
+    transition: 0.5s;
+}
+#side_menu_list li
+{
+    line-height: 100px;
+    width: 190px;
+    padding: 70px 0px 0px 10px;
+}
+
+#side_menu_list li ol
+{
+    text-align: center;
+}
+
+.side_link a:hover 
+{
+    font-size: 23px;
+}
+
+#view_body
+{
+    margin-top:100px;
+}
+
+#button_list
+{
+    display: block;
+    width: 90%;
+    height: 40px;
+    margin : 20px auto;
+}
+#button_list input
+{
+    float: right;
+    margin-left: 20px;
+}
+
+#wordbook_all_show
+{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    display:block;
+    width:500px;
+    height:500px;
+    top:30%;
+    left:35%;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px gray;
+    display: none;
+}
+
+#wordbook_all_show_list
+{
+    white-space:nowrap;
+    overflow-y:scroll;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+}
+
+#wordbook_all_show_list::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+}
+#wordbook_all_show_list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+#wordbook_all_show_list::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: rgb(236, 236, 236);
+}
+#wordbook_all_show_list::-webkit-scrollbar-button {
+    width: 0;
+    height: 10;
+}
+
+#wordbook_all_show_list li
+{
+    margin : 20px;
+}
+#wordbook_all_show_list ol
+{
+    margin : 0;
+    padding :21px;
+}
+
+#wordbook_all_list_close
+{
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    z-index: 1;
+    background-color: white;
+    border: 0px;
+    transition: 0.4s;
+}
+#wordbook_all_list_close:hover
+{
+    font-size: 17px;
+}
+
+#slider_menu
+{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    left: 10px;
+}
+#slider_menu a
+{
+    font-size: 20px;
+}
+
+#wordbook_all_show_list ol
+{
+    padding :0;
+}
+#wordbook_all_show_list dir
+{
+    height: 40px;
+}
+
+@media screen and (max-width: 950px)
+{
+    #wordbook_all_show
+    {
+        position: fixed;
+        background-color: rgb(255, 255, 255);
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        border-radius: 0px;
+    }
+    #wordbook_all_show_list
+    {
+        white-space:nowrap;
+        overflow-y:scroll;
+        height: 95%;
+        width: 95%;
+        position: absolute;
+    }
+}
