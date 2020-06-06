@@ -45,7 +45,6 @@ public class testDao
 
             if(rs.next())
             {
-                bean.setJson_data(rs.getString("json_data"));
                 return bean;
             }
         }
