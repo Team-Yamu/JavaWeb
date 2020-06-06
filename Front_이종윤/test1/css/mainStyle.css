@@ -1,0 +1,149 @@
+body
+{
+    font-family: "휴먼엑스포";
+    margin: 0px;
+}
+li
+{
+    list-style-type: none;
+}
+
+
+.box-style-1
+{
+    border-radius: 20px;
+    height: 400px;
+    background-color: #0018A8;
+}
+
+#wordbook-list ol
+{
+    display: inline-block;
+    width: 20%;
+    padding: 0px 2.2%;
+}
+@media screen and (max-width: 910px)
+{
+    #wordbook-list ol
+    {
+        display: inline-block;
+        width: 300px;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }   
+}
+
+#wordbook-list ol div
+{
+    color:white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 400px;
+}
+#wordbook-list ol div a
+{
+    width: 150px;
+    margin : auto;
+}
+
+#wordbook-p1
+{
+    background-color: #0018A8;
+}
+#wordbook-p2
+{
+    background-color: #0283F4;
+}
+#wordbook-p3
+{
+    background-color: #0158A6;
+}
+#wordbook-p4
+{
+    background-color: #02C3F4;
+}
+
+#input-textbox
+{
+    background-color: #E1E1E1;
+    border:none;
+    border-radius: 7px;
+    width: 300px;
+    height: 35px;
+    margin: auto;
+    display: block;
+}
+#LOGO
+{
+    font-size: 30px;
+    margin: 5px;
+}
+@media screen and (max-width: 910px)
+{
+    #wordbooks
+    {
+        white-space:nowrap;
+        overflow-x:scroll;
+    }
+    #wordbooks::-webkit-scrollbar {
+        width: 6px;
+        height: 10px;
+    }
+    #wordbooks::-webkit-scrollbar-track {
+    background-color: transparent;
+    }
+    #wordbooks::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: gray;
+    }
+    #wordbooks::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    }
+}
+
+#wordbooks li
+{
+    width: 90%;
+    height: 450px;
+    margin: auto;
+}
+
+span
+{
+    margin-bottom: 30px;
+}
+
+#side_menu
+{
+    position: absolute;
+    height: 100%;
+    width: 75px;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px gray;
+}
+
+@media screen and (max-width: 910px)
+{
+    #side_menu
+    {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 75px;
+        width: 100%;
+        background-color: white;
+        box-shadow: 5px 5px 5px 5px gray;
+    }
+    #side_menu li ol
+    {
+        display: inline;
+    }
+    #side_menu li
+    {
+        width: 80%;
+        margin:auto;
+        line-height: 75px;
+    }
+}

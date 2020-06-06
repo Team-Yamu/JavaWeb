@@ -1,0 +1,40 @@
+.card
+{
+    height: 400px;
+    width: 280px;
+    transition: 0.5s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card img
+{
+    display: inline-block;
+    height: 50%;
+}
+.card:hover
+{
+    transform: scale( 1.08 );
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+#news_list
+{
+    width: 90%;
+    height: 470px;
+    margin: 0;
+    margin-top:30px;
+}
+
+#news_list li
+{
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+.content
+{
+    padding: 2px 16px;
+}

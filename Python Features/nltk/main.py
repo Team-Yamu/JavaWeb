@@ -10,6 +10,7 @@ if __name__ == '__main__':
     parse.add_argument("-post", help="post to url", required=False, default=False)
     parse.add_argument('-ss', action='store_true')
     parse.add_argument('-soao', action='store_true')
+    parse.add_argument('-all', action='store_true')
 
     args = parse.parse_args()
 
@@ -19,6 +20,10 @@ if __name__ == '__main__':
         jnltk.setDefinition()
 
     if args.soao:
+        jnltk.setSynonymsAntonyms()
+
+    if args.all:
+        jnltk.setDefinition()
         jnltk.setSynonymsAntonyms()
 
     if args.save:
