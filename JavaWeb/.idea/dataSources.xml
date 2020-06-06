@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://database-1.cuetkmoisuln.ap-northeast-2.rds.amazonaws.com:3306/test</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="WordBookWeb@database-1.cuetkmoisuln.ap-northeast-2.rds.amazonaws.com" uuid="539d0a13-5508-4154-b0b5-241cea72507f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://database-1.cuetkmoisuln.ap-northeast-2.rds.amazonaws.com:3306/WordBookWeb</jdbc-url>
+    </data-source>
   </component>
 </project>
