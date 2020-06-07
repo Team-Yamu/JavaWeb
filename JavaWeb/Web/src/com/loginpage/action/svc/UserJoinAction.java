@@ -27,12 +27,28 @@ public class UserJoinAction implements Action
 
             result = userDAO.userInsert(user);
 
-            if (result == false)
+            if (result == true)
+            {
+                System.out.println("회원가입 성공");
+
+                forward.setRedirect(true);
+                forward.setPath("/login.login");
+                return forward;
+            }
+            else if (result == false)
             {
                 System.out.println("회원가입 실패");
+
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>");
+                out.println("alert('회원가입에 실패했습니다. Log를 참조해주세요.');");
+                out.println("location.href='/login.login';");
+                out.println("</script>");
+                out.close();
+
                 return null;
             }
-            System.out.println("회원가입 성공");
         }
         catch (Exception ex)
         {
@@ -46,11 +62,6 @@ public class UserJoinAction implements Action
             out.println("</script>");
             out.close();
         }
-        finally
-        {
-            forward.setRedirect(true);
-            forward.setPath("/login.login");
-            return forward;
-        }
+        return null;
     }
 }

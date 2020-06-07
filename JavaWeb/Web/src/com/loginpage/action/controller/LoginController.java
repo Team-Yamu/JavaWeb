@@ -3,6 +3,7 @@ package com.loginpage.action.controller;
 import com.loginpage.action.svc.UserJoinAction;
 import com.loginpage.action.svc.UserLoginAction;
 import com.loginpage.action.svc.UserListAction;
+import com.loginpage.action.svc.UserLogoutAction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +41,10 @@ public class LoginController extends HttpServlet
             // 로그인 Model
             case "/loginProcess.login":
                 action = new UserLoginAction();
+                break;
+            // 로그아웃 Model
+            case "/logoutProcess.login":
+                action = new UserLogoutAction();
                 break;
             // 모든 유저의 정보를 출력
             case "/UserList.login":
