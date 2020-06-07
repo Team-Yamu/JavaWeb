@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>회원가입</title>
+    <title>Join</title>
 </head>
 <body>
 <form name="InsertUser" action="./Insertuser.login" method="post">
@@ -11,7 +11,7 @@
         <table border="1">
             <tr>
                 <td colspan="2" align="center">
-                    <b><font size="5">회원가입 페이지</font></b>
+                    <b><font size="5">회원가입</font></b>
                 </td>
             </tr>
             <tr>

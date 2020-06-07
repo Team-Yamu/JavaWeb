@@ -17,7 +17,7 @@ public class UserDAO
     private PreparedStatement pstmt;
     private ResultSet rs;
 
-    // 기본생성자: 커넥션 풀로 DB를 연결합니다
+    // 기본생성자: 커넥션 풀로 DB 연결
     public UserDAO()
     {
         try
@@ -35,7 +35,7 @@ public class UserDAO
         }
     }
 
-    // 커넥션 풀을 종료합니다
+    // 커넥션 풀 종료
     public void dbClose()
     {
         try
@@ -69,7 +69,6 @@ public class UserDAO
 
             while (rs.next())
             {
-                // TODO: var 형식으로 변경합니다
                 var user = new UserBean();
 
                 user.setId(rs.getString("id"));
@@ -91,7 +90,7 @@ public class UserDAO
     }
 
     // 회원 가입
-    public boolean userInsert(UserBean user)
+    public boolean userInsert(UserBean user) throws Exception
     {
         int result;
         try
@@ -108,6 +107,11 @@ public class UserDAO
             if (result == 0)
                 return false;
             return true;
+        }
+        catch (java.sql.SQLIntegrityConstraintViolationException ex)
+        {
+            System.out.println("중복되는 id 존재: " + ex);
+            throw new Exception("중복되는 아이디가 존재합니다");
         }
         catch (Exception ex)
         {
@@ -134,7 +138,7 @@ public class UserDAO
 
             if (rs.next())
             {
-                if (rs.getString("password").equals(user.getId()))
+                if (rs.getString("password").equals(user.getPassword()))
                     // 회원 정보 일치
                     result = 1;
                 else
@@ -155,6 +159,4 @@ public class UserDAO
         }
         return result;
     }
-
-    // TODO: 아이디 중복 검사
 }

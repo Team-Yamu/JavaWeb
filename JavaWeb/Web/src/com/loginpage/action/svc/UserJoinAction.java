@@ -7,24 +7,25 @@ import com.loginpage.db.vo.UserBean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
-public class InsertUserAction implements Action
+public class UserJoinAction implements Action
 {
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        var userdao = new UserDAO();
-        var userBean = new UserBean();
+        var userDAO = new UserDAO();
+        var user = new UserBean();
         var forward = new ActionForward();
         boolean result = false;
 
         try
         {
-            userBean.setId(request.getParameter("id"));
-            userBean.setPassword(request.getParameter("password"));
-            userBean.setName(request.getParameter("name"));
+            user.setId(request.getParameter("id"));
+            user.setPassword(request.getParameter("password"));
+            user.setName(request.getParameter("name"));
 
-            result = userdao.userInsert(userBean);
+            result = userDAO.userInsert(user);
 
             if (result == false)
             {
@@ -35,12 +36,20 @@ public class InsertUserAction implements Action
         }
         catch (Exception ex)
         {
-            System.out.println("InsertUserAction 실패" + ex);
+            System.out.println("UserJoinAction 실패: " + ex.getMessage());
+
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('중복되는 아이디가 존재합니다.');");
+            out.println("location.href='/login.login';");
+            out.println("</script>");
+            out.close();
         }
         finally
         {
             forward.setRedirect(true);
-            forward.setPath("./views/loginpage/loginpage.jsp");
+            forward.setPath("/login.login");
             return forward;
         }
     }
