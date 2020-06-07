@@ -3,33 +3,32 @@ package com.loginpage.action.svc;
 import com.loginpage.action.controller.Action;
 import com.loginpage.action.controller.ActionForward;
 
-import com.loginpage.db.dao.UserDAO;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
-public class UserListAction implements Action
+public class UserLogoutAction implements Action
 {
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        var userDAO = new UserDAO();
         var forward = new ActionForward();
+        HttpSession session = request.getSession();
+
         try
         {
-            List userList = userDAO.getAllUserList();
+            // Session id값 삭제
+            session.removeAttribute("id");
 
-            request.setAttribute("userList", userList);
+            System.out.println("로그아웃 성공");
 
-            // userdao.con.close();
-            forward.setRedirect(false);
-            forward.setPath("./views/loginpage/userInfo.jsp");
+            forward.setRedirect(true);
+            forward.setPath("/login.login");
             return forward;
         }
         catch (Exception ex)
         {
-            System.out.println("UserListAction 에러: " + ex);
+            System.out.println("UserLogoutAction에러: " + ex);
         }
         return null;
     }
