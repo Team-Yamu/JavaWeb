@@ -1,0 +1,105 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    padding: 10px;
+    max-width : 800px;
+    margin:auto;
+}
+.grid-item {
+    padding: 15px;
+    text-align: center;
+}
+.grid-item .wordbookBtn
+{
+    display:inline-block;
+    border-radius:6px;
+    width:100px;
+    height:120px;
+    font-size:15px;
+    line-height:120px;
+    color:white;
+    box-shadow: 3px 3px 3px gray;
+    transition: 0.5s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    cursor: pointer;
+    border:none;
+}
+
+.grid-item .wordbookBtn:hover, .grid-item #addBtn:hover
+{
+    transform: scale( 1.2 );
+}
+
+.grid-item #addBtn
+{
+    background-color:white;
+    display:inline-block;
+    border-radius:6px;
+    width:100px;
+    height:120px;
+    font-size:15px;
+    line-height:120px;
+    color:black;
+    border: 3px dotted black;
+    transition: 0.5s;
+    outline: none;
+    cursor: pointer;
+}
+.grid-item #addBtn:hover
+{
+    border: 3px dotted gray;
+}
+
+#title
+{
+    margin:auto;
+    margin-top:130px;
+    padding:0 10px;
+}
+
+@media(min-width:840px)
+{
+    #title
+    {
+        width: 800px;
+    }
+}
+
+@media(max-width:840px)
+{
+    .grid-container
+    {
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+@media(max-width:700px)
+{
+    .grid-container
+    {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+@media(max-width:565px)
+{
+    .grid-container
+    {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media(max-width:420px)
+{
+    .grid-container
+    {
+        grid-template-columns: auto;
+    }
+    .grid-item .wordbookBtn, .grid-item #addBtn
+    {
+        width:70%;
+        height:250px;
+        font-size:15px;
+        line-height:250px;
+    }
+}

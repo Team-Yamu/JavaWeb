@@ -1,0 +1,56 @@
+a{text-decoration-line: none;}
+li{list-style-type: none;}
+ul{padding:0;}
+body{margin:0;}
+
+.header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 45px;
+    padding: 0 10px;
+    background-color: rgb(245, 245, 245);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+.button-size1 {
+    padding: 7px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    margin : 0px 0px 0px 5px;
+    cursor: pointer;
+}
+#login-btn:hover, #signin-btn:hover
+{
+    background-color: #b4b4b4;
+}
+
+#login-btn:active, #signin-btn:active
+{
+    background-color: #008cff;
+}
+
+#right-btns
+{
+    position: relative;
+    display: inline-block;
+}
+.logo a
+{
+    font-size: 30PX;
+    font-weight: bold;
+    color:black;
+}
+.buttons
+{
+    outline: none;
+    background-color: #008cff;
+    color: white;
+}
