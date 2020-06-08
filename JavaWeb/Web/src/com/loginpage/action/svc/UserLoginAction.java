@@ -29,7 +29,16 @@ public class UserLoginAction implements Action
             result = userDAO.isUser(user);
 
             if (result == 1)
+            {
                 System.out.println("로그인 성공");
+
+                // Session 등록
+                session.setAttribute("id", user.getId());
+
+                forward.setRedirect(true);
+                forward.setPath("./views/loginpage/loginpage.jsp");
+                return forward;
+            }
             else if (result == 0)
             {
                 System.out.println("비밀번호 틀림");
@@ -38,9 +47,11 @@ public class UserLoginAction implements Action
                 PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('비밀번호가 일치하지 않습니다.');");
-                out.println("location.href='./views/loginpage/loginForm.jsp';");
+                out.println("location.href='/login.login';");
                 out.println("</script>");
                 out.close();
+
+                return null;
             }
             else if (result == -1)
             {
@@ -50,7 +61,7 @@ public class UserLoginAction implements Action
                 PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('아이디가 존재하지 않습니다.');");
-                out.println("location.href='./views/loginpage/loginForm.jsp';");
+                out.println("location.href='/login.login';");
                 out.println("</script>");
                 out.close();
 
@@ -61,13 +72,6 @@ public class UserLoginAction implements Action
         {
             System.out.println("UserLoginAction 실패: " + ex);
         }
-        finally
-        {
-            session.setAttribute("id", user.getId());
-
-            forward.setRedirect(true);
-            forward.setPath("./views/loginpage/loginpage.jsp");
-            return forward;
-        }
+        return null;
     }
 }
