@@ -9,6 +9,7 @@ if __name__ == '__main__':
     parse.add_argument("-post", help="post to url", required=False, default=False)
 
     parse.add_argument('-k', help="Set Keyword", action='store_true')
+    parse.add_argument('-k', help="Set Keyword", action='store_true')
     parse.add_argument('-s', help="Set Summary", action='store_true')
     parse.add_argument('-p', help="Set Publish Date", action='store_true')
     parse.add_argument('-a', help="Set Article Text", action='store_true')
