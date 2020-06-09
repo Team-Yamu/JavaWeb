@@ -23,6 +23,7 @@ $ python main.py {link} {argv}
 ## Json Format
 ```java
 "hash" : String
+"title" : String
 "keyword" : String[]
 "summary" : String
 "publish_date" : String
@@ -35,10 +36,10 @@ $ python main.py {link} {argv}
 ## Json 내부 내용 설명
 
 
-####기 제공 
+#### 기본 제공 
 
 hash : url 을 인코딩 후 sha256로 암호화하여 String 으로 리턴합니다.
-
+title : 기사 제목입니다.
 ---
 
 ####선택 제공
