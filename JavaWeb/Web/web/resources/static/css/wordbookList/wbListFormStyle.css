@@ -1,0 +1,91 @@
+#popup
+{
+    display: none;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.1);
+}
+#addWordbook table
+{
+    width : 400px;
+    margin: auto;
+    padding : 26px 10px;
+    padding : 0px 10px 0px 10px;
+}
+#addWordbookBtn
+{
+    float: right;
+}
+td
+{
+    padding:5px;
+}
+
+td input[type="text"]
+{
+    padding:7px;
+    width: 240px;
+    border-radius: 5px;
+    border : solid 1.5px gray;
+    outline: none;
+}
+
+td input[type="text"]:hover
+{
+    border : solid 1.5px gray;
+}
+td input[type="text"]:focus
+{
+    border : solid 1.5px #41aaff;
+}
+
+td input[type="button"]
+{
+    width: 70px;
+    outline: none;
+    background-color: #008cff;
+    color: white;
+    padding: 4px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    margin : 0px 0px 0px 5px;
+    cursor: pointer;
+}
+td input[type="button"]:hover
+{
+    background-color: #a8a8a8;
+}
+td input[type="button"]:active
+{
+    background-color: #008afc;
+}
+#closePopupBtn
+{
+    float: right;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    padding:13px;
+    outline: none;
+    cursor: pointer;
+    transition:0.3s
+}
+#closePopupBtn:hover
+{
+    transform: scale( 1.2 );
+}
+#popupForm
+{
+    position:absolute;
+    width: 430px;
+    height: 180px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background:#fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px gray;
+}

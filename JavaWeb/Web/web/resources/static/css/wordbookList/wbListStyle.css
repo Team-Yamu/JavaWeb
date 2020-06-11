@@ -1,3 +1,8 @@
+#title a
+{
+    font-size: 30px; font-weight: bold;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
@@ -12,13 +17,14 @@
 .grid-item .wordbookBtn
 {
     display:inline-block;
+    
     border-radius:6px;
     width:100px;
     height:120px;
     font-size:15px;
     line-height:120px;
-    color:white;
-    box-shadow: 3px 3px 3px gray;
+    color: #ffffff;
+    box-shadow: 3px 3px 3px #808080;
     transition: 0.5s;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -55,8 +61,11 @@
 #title
 {
     margin:auto;
-    margin-top:130px;
     padding:0 10px;
+}
+#section
+{
+    margin-top:130px;
 }
 
 @media(min-width:840px)
@@ -102,4 +111,25 @@
         font-size:15px;
         line-height:250px;
     }
+}
+
+#addBtn
+{
+    float: right;
+    padding: 8px 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5e5e;
+    color:white;
+    font-weight:bold;
+    cursor: pointer;
+}
+#addBtn:hover
+{
+    background-color: #929292;
+}
+#addBtn:active
+{
+    background-color: #ff5e5e;
 }

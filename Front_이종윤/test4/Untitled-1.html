@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.myGrid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    padding: 10px;
+    max-width : 800px;
+    margin:auto;
+}
+.myGrid-item {
+    padding: 15px;
+    text-align: center;
+}
+.myGrid-item .wordbookBtn
+{
+    display:inline-block;
+    border-radius:6px;
+    width:100px;
+    height:120px;
+    font-size:15px;
+    line-height:120px;
+    color:white;
+    box-shadow: 3px 3px 3px gray;
+    transition: 0.5s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    cursor: pointer;
+    border:none;
+}
+
+.myGrid-item .wordbookBtn:hover, .myGrid-item #addBtn:hover
+{
+    transform: scale( 1.2 );
+}
+
+.myGrid-item #addBtn
+{
+    background-color:white;
+    display:inline-block;
+    border-radius:6px;
+    width:100px;
+    height:120px;
+    font-size:15px;
+    line-height:120px;
+    color:black;
+    border: 3px dotted black;
+    transition: 0.5s;
+    outline: none;
+    cursor: pointer;
+}
+.myGrid-item #addBtn:hover
+{
+    border: 3px dotted gray;
+}
+
+#title
+{
+    margin:auto;
+    margin-top:130px;
+    padding:0 10px;
+}
+
+@media(min-width:840px)
+{
+    #title
+    {
+        width: 800px;
+    }
+}
+
+@media(max-width:840px)
+{
+    .myGrid-container
+    {
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+@media(max-width:700px)
+{
+    .myGrid-container
+    {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+@media(max-width:565px)
+{
+    .myGrid-container
+    {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media(max-width:420px)
+{
+    .myGrid-container
+    {
+        grid-template-columns: auto;
+    }
+    .myGrid-item .wordbookBtn, .myGrid-item #addBtn
+    {
+        width:70%;
+        height:250px;
+        font-size:15px;
+        line-height:250px;
+    }
+}
+
+</style>
+
+<style>
+    .menu-title
+    {
+        text-align: center;
+        font-size: 30px;
+    }
+    .menu-title h3
+    {
+        margin: 50px 0px;
+    }
+
+    .more-button
+    {
+        width: 68.5px;
+        margin :0px auto;
+        padding-top:10px;
+    }
+    .more-button button
+    {
+        margin:0;
+    }
+    ul
+    {
+        padding:0;
+    }
+    body
+    {
+        margin:0;
+    }
+
+    .header
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        
+        height: 30px;
+        padding: 1rem;
+        background-color: rgb(245, 245, 245);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+    }
+
+    #login-menu li
+    {
+        font-size: 18px;
+    }
+    
+    .logo
+    {
+        font-size: 30PX;
+        font-weight: bold;    
+    }
+    
+    .dropbtn {
+        background-color: #008cff;
+        color: white;
+        padding: 10px 16px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        margin : 0px 0px 0px 40px
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        left: -60px;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-weight: bolder;
+      }
+      
+      .dropdown-content a:hover {background-color: #ddd;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+      .dropdown:hover .dropbtn {background-color: #54affa;}
+    
+    #login-menu
+    {
+        display: inline-block;
+        padding : 0;
+    }
+    
+    #login-menu li
+    {
+        display: inline-block;
+        padding : 5px;
+    }
+    #login-menu li a
+    {
+        color: #008cff;
+        font-weight: bold;    
+    }
+    a
+    {
+        text-decoration-line: none;
+    }
+    
+    li
+    {
+        list-style-type: none;
+    }
+
+</style>
+
+<style>
+    #sideMenu
+    {
+        display: none;
+    }
+    #sideMenu a {
+        display:block;
+        transition: 0.3s;
+        padding: 14px;
+        width: 100px;
+        margin:5px 0px;
+        text-decoration: none;
+        font-size: 17px;
+        color: white;
+        border-radius: 0 10px 10px 0;
+        text-align: right;
+    }
+    #home-menu {
+        background-color: rgb(59, 89, 255);
+    }
+    
+    #wordbook-menu {
+        background-color: #2196F3;
+    }
+    
+    #news-menu {
+        background-color: #0158A6;
+    }
+    
+    #openwb-menu {
+        background-color: #0283F4;
+    }
+
+    @media(min-width:1024px)
+    {
+        #sideMenu a {
+            width: 200px;
+            padding: 14px 20px;
+        }
+    }
+</style>
+
+<style>
+    #sideBar
+    {
+        position: fixed;
+        top: 70px;
+    }
+    #sideMenuBtn {
+      display: inline-block;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #333;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+    
+    .change .bar1 {
+      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+      transform: rotate(-45deg) translate(-9px, 6px);
+    }
+    
+    .change .bar2 {opacity: 0;}
+    
+    .change .bar3 {
+      -webkit-transform: rotate(45deg) translate(-8px, -8px);
+      transform: rotate(45deg) translate(-8px, -8px);
+    }
+    #backgroundFade
+    {
+        display: none; 
+        position:fixed; 
+        width: 100%; 
+        height: 100%; 
+        top:0; 
+        left:0; 
+        background:rgba(0,0,0,0.2);
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+    function randomColor() 
+    {
+        var wordbookBtn = document.getElementsByClassName("wordbookBtn");
+        var colorArray = ["#0018A8","#0283F4","#0158A6"];
+         
+        for(var i = 0;i<wordbookBtn.length;i++)
+        {
+            var colorCode = colorArray[Math.round(Math.random()*2)];
+            wordbookBtn[i].style.background = colorCode;
+        }
+    }
+    
+    function sideMenu(x) {
+        x.classList.toggle("change");
+        if($("#sideMenu").css("display")=="block")
+        {
+            $("#sideMenu").fadeOut(500);
+            $("#backgroundFade").fadeOut(500);
+        }
+        else
+        {
+            $("#sideMenu").fadeIn(500);
+            $("#backgroundFade").fadeIn(500);
+        }
+      }
+</script>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+</head>
+<body>
+<div class="header" id="header-1">
+    <span class="logo" id="logo-1">YAMU</span>
+    <span id="right-menu"></span>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">Wordbook</a>
+                <a href="#">News</a>
+                <a href="#">Open Wordbook</a>
+            </div>
+        </div>
+    </span>
+</div>
+<div id="backgroundFade"></div>
+<div id="sideBar">
+    <span id="sideMenuBtn" onclick="sideMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </span>
+    <div id="sideMenu">
+        <a href="#" id="home-menu">홈</a>
+        <a href="#" id="wordbook-menu">단어장</a>
+        <a href="#" id="news-menu">뉴스</a>
+        <a href="#" id="openwb-menu">오픈 단어장</a>
+    </div>
+</div>
+<div>
+    <div id="title">
+        <a style="font-size: 30px; font-weight: bold;">단어장</a>
+        <hr>
+    </div>
+    <div class="myGrid-container">
+        <div class="myGrid-item"><button id="addBtn">+</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor0">IT</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor1">CNN</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor2">저리가</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor3">진짜공부함</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor4">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor5">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor6">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor7">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor8">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor9">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor10">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor11">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor12">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor13">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor14">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor15">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor16">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor17">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor18">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor19">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor20">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor21">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor22">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor23">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor24">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor25">안녕</button></div>
+        <div class="myGrid-item"><button onclick="location.href='#'" class="wordbookBtn" id="randomColor26">안녕</button></div>
+    </div>
+    <script type="text/javascript">
+        randomColor();
+    </script>
+</div>
+
+</body>
+</html>

@@ -17,7 +17,9 @@ public class addWordbookAction implements Action
         var wordbookDAO = new WordbookDAO();
         var wordbookBean = new WordbookBean();
 
-        boolean testFlg = false;
+        response.setCharacterEncoding("utf-8");
+
+        boolean existFlg = false;
         try
         {
             HttpSession session = request.getSession();
@@ -27,17 +29,27 @@ public class addWordbookAction implements Action
             wordbookBean.setName(request.getParameter("wordbookName"));
             wordbookBean.setInfo(request.getParameter("info"));
 
-            //단어장 추가
-            wordbookDAO.insertWordbook(wordbookBean);
+            //내 단어장에 같은 이름의 단어장이 존재하는지 확인
+            existFlg = wordbookDAO.existWordbookName(wordbookBean);
 
-            //현재 유저의 단어장 리스트를 json으로 반환
-            String jsonData = wordbookDAO.selectWordbookListJson(wordbookBean);
-            response.setCharacterEncoding("utf-8");
-            response.getWriter().write(jsonData);
+            if(existFlg)
+            {
+                wordbookDAO.insertWordbook(wordbookBean);
+
+                //현재 유저의 단어장 리스트를 json으로 반환
+                String jsonData = wordbookDAO.selectWordbookListJson(wordbookBean);
+                response.getWriter().write(jsonData);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            //단어장 추가
         }
         catch (Exception ex)
         {
             ex.printStackTrace();
+            response.getWriter().write("");
         }
         finally
         {

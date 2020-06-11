@@ -1,0 +1,65 @@
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+<style>
+  .popup { /* 팝업이 열렸을 때, 팝업창 주변 전체를 어둡게 합니다 */ 
+    display: none; 
+    position:fixed; 
+    width: 100%; 
+    height: 100%; 
+    top:0; 
+    left:0; 
+    background:rgba(0,0,0,0.5);
+   } 
+   .popup-inner{ /* 열렸을 때 팝업창 크기와 색상을 지정합니다. */
+    position:absolute; 
+    width: 500px; 
+    height: 300px; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    padding : 10px 15px; 
+    background:#fff; 
+    border-radius: 10px;
+
+  } 
+  .popup-close{ /* 팝업창 내 닫기 버튼의 위치를 지정합니다. */ 
+    position: absolute; 
+    display: block; 
+    top:10px; 
+    right: 10px; }
+
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+  $(function() { //----- OPEN 
+    $('[data-popup-open]').on('click', function(e) { // 팝업 열기 버튼 클릭시 동작하는 이벤트입니다. 
+      var targeted_popup_class = jQuery(this).attr('data-popup-open'); 
+      $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350); e.preventDefault(); 
+    }); //----- CLOSE 
+
+    $('[data-popup-close]').on('click', function(e) { // 팝업 닫기 버튼 클릭시 동작하는 이벤트입니다. 
+      var targeted_popup_class = jQuery(this).attr('data-popup-close'); 
+      $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350); e.preventDefault(); 
+    }); 
+  });
+</script>
+
+<main>
+
+  <a href="#" data-popup-open="example">open</a> <!-- 팝업 열기 버튼 입니다. -->
+
+
+  <div class="popupWbAdd" data-popup="example">  <!-- 표출되는 팝업 입니다. -->
+    <div class="popup-inner">
+      <div class="popup-contents">
+      <a class="popup-close" data-popup-close="example" href="#">X</a> <!-- 팝업 닫기 버튼입니다 -->
+      <div id="popup-inputWb">
+        <form id="addWordbook" style="z-index:100">
+            단어장 이름 : <input type="text" name="wordbookName">
+            설명 : <input type="text" name="info">
+            <input type="button" value="추가" id="addWordbookBtn">
+        </form>
+    </div>
+      </div>
+    </div>
+  </div>
+</main>

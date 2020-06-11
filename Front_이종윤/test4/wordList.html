@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<head>
+    <title>단어리스트</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <style>
+        a{text-decoration-line: none;}
+        li{list-style-type: none;}
+        ul{padding:0;}
+        body{margin:0;}
+
+        .header
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 45px;
+            padding: 0 10px;
+            background-color: rgb(245, 245, 245);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+        .button-size1 {
+            padding: 7px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            margin : 0px 0px 0px 5px;
+            cursor: pointer;
+        }
+        #login-btn:hover, #signin-btn:hover
+        {
+            background-color: #b4b4b4;
+        }
+
+        #login-btn:active, #signin-btn:active
+        {
+            background-color: #008cff;
+        }
+
+        #right-btns
+        {
+            position: relative;
+            display: inline-block;
+        }
+        .logo a
+        {
+            font-size: 30PX;
+            font-weight: bold;
+            color:black;
+        }
+        .buttons
+        {
+            outline: none;
+            background-color: #008cff;
+            color: white;
+        }
+    </style>
+    <style>
+        .section
+        {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        #wordListTitle a
+        {
+            font-size: 25px; 
+            font-weight: bold;
+        }
+        #addWord-btn, #wordTest-btn
+        {
+            outline: none;
+            background-color: #666666;
+            color: white;
+        }
+        #wordTest-btn
+        {
+            background-color: #ff5858;
+        }
+        #addWord-btn:hover, #wordTest-btn:hover
+        {
+            background-color: #b4b4b4;
+        }
+
+        #addWord-btn:active, #wordTest-btn:active
+        {
+            background-color: #008cff;
+        }
+
+        .button-size2 {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            margin : 4px 0px 0px 5px;
+            cursor: pointer;
+        }
+        #right-btns
+        {
+            float: right;
+        }
+        #wordListHeader
+        {
+            height: 38px;
+            width: 100%;
+            margin: 0px 3px;
+        }
+        hr
+        {
+            margin:7px 10px;
+        }
+        #wordListHeader #right-btns
+        {
+            margin-right: 8px;
+        }
+        #wordList ul li
+        {
+            background-color: rgb(245, 245, 245);
+            height: 50px;
+            margin: 14px;
+            box-shadow: 3px 3px 3px gray;
+            border-radius: 5px;
+            transition: 0.3s;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        #wordList ul li:hover
+        {
+            transform: scale( 1.08 );
+        }
+        #wordList ul li span
+        {
+            height: 50px;
+            width: 60px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+        }
+        
+        @media(min-width:1024px)
+        {
+            #wordList ul li, #wordList ul li span
+            {
+                height: 80px;
+            }
+            #wordList ul li span
+            {
+                width: 100px;
+                font-size: 24px;
+            }
+            #wordList ul li
+            {
+                line-height: 80px;
+            }
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () 
+        {
+            var array = ["#F2C12E","#F28F16","#F25C05","#1B65A6","#F2C53D","#F2274C"];
+            for(var i = 0; i<14;i++)
+            {
+                var colorCode = array[Math.round(Math.random()*(array.length-1))];
+                var idName = "wordRdColor-"+i
+                document.getElementById(idName).style.background = colorCode;
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span class="logo"><a href="#">YAMU</a></span>
+        <div id="right-btns">
+            <button onclick="location.href='./login.login';" class="button-size1 buttons" id="login-btn"wordList>login</button>
+            <button onclick="location.href='./Insertpage.login';" class="button-size1 buttons" id="signin-btn">Sign in</button>
+        </div>
+        </span>
+    </div>
+    <div class="section">
+        <div id="wordListHeader">
+            <span id="wordListTitle"><a>단어장 이름</a></span>
+            <div id="right-btns">
+                <button onclick="location.href='#';" class="button-size2 buttons" id="addWord-btn">단어 추가</button>
+                <button onclick="location.href='#';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>
+            </div>
+        </div>
+        <hr>
+        <div id="wordList">
+            <ul>
+                <li><span id="wordRdColor-0">testadsfsadfasdf</span></li>
+                <li><span id="wordRdColor-1">test</span></li>
+                <li><span id="wordRdColor-2">test</span></li>
+                <li><span id="wordRdColor-3">test</span></li>
+                <li><span id="wordRdColor-4">test</span></li>
+                <li><span id="wordRdColor-5">test</span></li>
+                <li><span id="wordRdColor-6">test</span></li>
+                <li><span id="wordRdColor-7">test</span></li>
+                <li><span id="wordRdColor-8">test</span></li>
+                <li><span id="wordRdColor-9">test</span></li>
+                <li><span id="wordRdColor-10">test</span></li>
+                <li><span id="wordRdColor-11">test</span></li>
+                <li><span id="wordRdColor-12">test</span></li>
+                <li><span id="wordRdColor-13">test</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
