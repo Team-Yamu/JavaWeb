@@ -4,36 +4,24 @@
 <html>
 <head>
     <title>Join</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link href="/resources/static/css/loginPage/joinStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form name="InsertUser" action="./Insertuser.login" method="post">
-    <center>
-        <table border="1">
-            <tr>
-                <td colspan="2" align="center">
-                    <b><font size="5">회원가입</font></b>
-                </td>
-            </tr>
-            <tr>
-                <td>아이디:</td>
-                <td><input type="text" name="id"/></td>
-            </tr>
-            <tr>
-                <td>비밀번호:</td>
-                <td><input type="password" name="password"/></td>
-            </tr>
-            <tr>
-                <td>이름:</td>
-                <td><input type="text" name="name"/></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <a href="javascript:InsertUser.submit()">회원가입</a>
-                    <a href="javascript:joinform.reset()">다시작성</a>
-                </td>
-            </tr>
-        </table>
-    </center>
+<jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
+<jsp:include page="/resources/templates/sideMenuTemplate.jsp" flush="false"/>
+<form name="InsertUser" action="./Insertuser.login" method="post" id="inputForm">
+    <p id="joinTitle">회원가입</p>
+    <p>아이디</p>
+    <input type="text" name="id" class="inputStyle"/>
+    <p>비밀번호</p>
+    <input type="password" name="password" class="inputStyle"/>
+    <p>닉네임</p>
+    <input type="text" name="name" class="inputStyle"/>
+
+    <div id="inputButtons">
+        <button href="javascript:InsertUser.submit()">회원가입</button>
+    </div>
 </form>
 </body>
 </html>

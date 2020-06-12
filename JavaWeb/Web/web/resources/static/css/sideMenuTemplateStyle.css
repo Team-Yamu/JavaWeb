@@ -37,11 +37,13 @@
     top:0;
     left:0;
     background:rgba(0,0,0,0.2);
+    z-index: 5;
 }
 
 #sideMenu
 {
     display: none;
+    z-index: 10;
 }
 #sideMenu a {
     display:block;

@@ -36,7 +36,7 @@ public class UserLoginAction implements Action
                 session.setAttribute("id", user.getId());
 
                 forward.setRedirect(true);
-                forward.setPath("./views/loginpage/loginpage.jsp");
+                forward.setPath("/");
                 return forward;
             }
             else if (result == 0)

@@ -6,42 +6,30 @@
     {
 %>
         <script>
-            location.href="./views/loginpage/loginpage.jsp";
+            location.href="/";
         </script>
 <%
     }
 %>
-
 <html>
 <head>
     <title>Login</title>
+    <link href="/resources/static/css/loginPage/loginStyle.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
 </head>
 <body>
-<form name="loginform" action="/loginProcess.login" method="post">
-    <center>
-        <table border="1">
-            <tr>
-                <td colspan="2" align="center">
-                    <b><font size="5">로그인</font></b>
-                </td>
-            </tr>
-            <tr>
-                <td>아이디:</td>
-                <td><input type="text" name="id"/></td>
-            </tr>
-            <tr>
-                <td>비밀번호:</td>
-                <td><input type="password" name="password"/></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <a href="javascript:loginform.submit()">로그인</a>
-                    &nbsp;&nbsp;
-                    <a href="/Insertpage.login">회원가입</a>
-                </td>
-            </tr>
-        </table>
-    </center>
-</form>
+<jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
+<jsp:include page="/resources/templates/sideMenuTemplate.jsp" flush="false"/>
+    <form name="loginform" action="/loginProcess.login" method="post" id="inputForm">
+        <p id="loginTitle">로그인</p>
+        <p>아이디</p>
+        <input type="text" name="id" class="inputStyle"/>
+        <p>비밀번호</p>
+        <input type="password" name="password" class="inputStyle"/>
+        <div id="inputButtons">
+            <button href="/Insertpage.login">회원가입</button>
+            <button href="javascript:loginform.submit()">로그인</button>
+        </div>
+    </form>
 </body>
 </html>

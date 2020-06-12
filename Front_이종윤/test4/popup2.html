@@ -35,6 +35,7 @@
         border-radius: 5px;
         border : solid 1.5px gray;
         outline: none;
+        font-size: 13px;
     }
 
     td input[type="text"]:hover
@@ -92,6 +93,43 @@
         background:#fff; 
         border-radius: 10px;
     }
+    td input[type="button"]
+    {
+        margin-right: 50px;
+    }
+    @media(max-width:1024px)
+    {
+        #popup
+        {
+            display: none;
+            position:fixed; 
+            width: 100%; 
+            height: 100%; 
+            top:0; 
+            left:0; 
+        }
+        #popupForm
+        {
+            position:absolute; 
+            width: 100%; 
+            height: 100%;  
+            background:#fff; 
+            border-radius: 10px;
+        
+        }
+        #addWordbook
+        {
+            margin: auto;
+            width : 350px;
+        }
+
+        #addWordbook table
+        {
+            padding : 26px 10px;
+            padding : 0px 10px 0px 10px;
+            margin:100px 0;
+        }
+    }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -119,11 +157,11 @@
             <form id="addWordbook">
                 <table>
                     <tr>
-                        <td>단어장 이름 : </td>
+                        <td style="font-size: 13px;">이름 : </td>
                         <td><input type="text" name="wordbookName"></td>
                     </tr>
                     <tr>
-                        <td>설명 : </td>
+                        <td style="font-size: 13px;">설명 : </td>
                         <td><input type="text" name="info"></td>
                     </tr>
                     <tr>

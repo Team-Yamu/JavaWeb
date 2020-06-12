@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #popup
+    {
+        display: block;
+        position:fixed; 
+        width: 100%; 
+        height: 100%; 
+        top:0; 
+        left:0; 
+        background:rgba(0,0,0,0.1);
+    }
+    #closePopupBtn
+    {
+        float: right;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        padding:13px;
+        outline: none;
+        cursor: pointer;
+        transition:0.3s
+    }
+    #closePopupBtn:hover
+    {
+        transform: scale( 1.2 );
+    }
+    #popupForm
+    {
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        margin: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    input[type="text"]
+    {
+        padding:7px;
+        width: 90%;
+        border-radius: 5px;
+        border : solid 1.5px gray;
+        outline: none;
+        font-size: 13px;
+    }
+
+    input[type="button"]
+    {
+        width: 70px;
+        outline: none;
+        background-color: #008cff;
+        color: white;
+        padding: 4px 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        margin : 10px 0px 0px 5px;
+        cursor: pointer;
+        float: right;
+    }
+    input[type="button"]:hover
+    {
+        background-color: #a8a8a8;
+    }
+    input[type="button"]:active
+    {
+        background-color: #008afc;
+    }
+    @media(max-width:500px)
+    {
+        #popupForm
+        {
+            width: 80%;
+        }
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(function()
+    {
+        $("#addBtn").on("click",function (e)
+        {
+            $("#popup").fadeIn(150); e.preventDefault(); 
+        })
+        $("#closePopupBtn").on("click",function (e)
+        {
+            $("#popup").fadeOut(150); e.preventDefault(); 
+        })
+    });
+</script>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+
+</head>
+<body>
+    <div class="grid-item"><button id="addBtn">+</button></div> 
+    <div id="popup">
+        <div id="popupForm">
+            <button id="closePopupBtn">닫기</button>
+            <form id="addWordbook">
+                <p id="wordbookName">이름</p>
+                <input type="text" name="wordbookName">
+                <p id="wordbookInfo">설명</p>
+                <input type="text" name="info">
+                <input type="button" value="추가" id="addWordbookBtn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

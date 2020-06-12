@@ -14,8 +14,11 @@
 <html>
 <head>
     <title>YAMU</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
 </head>
 <body>
+<jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
+<jsp:include page="/resources/templates/sideMenuTemplate.jsp" flush="false"/>
 <ul>
     <%
         for(Object item : wordbookList)

@@ -20,30 +20,21 @@
     <script src="/resources/static/js/wordbookList/wbListJS.js"></script>
     <link href="/resources/static/css/topTemplateStyle.css" rel="stylesheet" type="text/css">
     <link href="/resources/static/css/wordbookList/wbListStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordbookList/wbListFormStyle.css" rel="stylesheet" type="text/css">
+    <link href="/resources/static/css/wordbookList/wbListPopupStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
-<jsp:include page="/resources/templates/sideMenuTemplate.jsp" flush="false"/>
+<jsp:include page="/resources/templates/topTemplate.jsp"/>
+<jsp:include page="/resources/templates/sideMenuTemplate.jsp"/>
 <div id="section">
     <div id="popup">
         <div id="popupForm">
             <button id="closePopupBtn">닫기</button>
             <form id="addWordbook">
-                <table>
-                    <tr>
-                        <td>단어장 이름 : </td>
-                        <td><input type="text" name="wordbookName"></td>
-                    </tr>
-                    <tr>
-                        <td>설명 : </td>
-                        <td><input type="text" name="info"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="button" value="추가" id="addWordbookBtn"></td>
-                    </tr>
-                </table>
+                <p id="wordbookName">이름</p>
+                <input type="text" name="wordbookName">
+                <p id="wordbookInfo">설명</p>
+                <input type="text" name="info">
+                <input type="button" value="추가" id="addWordbookBtn">
             </form>
         </div>
     </div>

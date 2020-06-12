@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="header">
-    <span class="logo"><a href="#">YAMU</a></span>
+    <span class="logo"><a href="/">YAMU</a></span>
     <span id="right-menu"></span>
     <div id="right-btns">
         <%
@@ -21,3 +21,4 @@
     </div>
     </span>
 </div>
+<link href="/resources/static/css/topTemplateStyle.css" rel="stylesheet" type="text/css">
