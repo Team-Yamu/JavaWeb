@@ -2,65 +2,13 @@
 <head>
     <title>단어리스트</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
     <style>
         a{text-decoration-line: none;}
         li{list-style-type: none;}
         ul{padding:0;}
         body{margin:0;}
-
-        .header
-        {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-
-            height: 45px;
-            padding: 0 10px;
-            background-color: rgb(245, 245, 245);
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1;
-        }
-        .button-size1 {
-            padding: 7px 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 10px;
-            margin : 0px 0px 0px 5px;
-            cursor: pointer;
-        }
-        #login-btn:hover, #signin-btn:hover
-        {
-            background-color: #b4b4b4;
-        }
-
-        #login-btn:active, #signin-btn:active
-        {
-            background-color: #008cff;
-        }
-
-        #right-btns
-        {
-            position: relative;
-            display: inline-block;
-        }
-        .logo a
-        {
-            font-size: 30PX;
-            font-weight: bold;
-            color:black;
-        }
-        .buttons
-        {
-            outline: none;
-            background-color: #008cff;
-            color: white;
-        }
-    </style>
-    <style>
         .section
         {
             width: 100%;
@@ -68,10 +16,11 @@
             margin: auto;
             margin-top: 100px;
         }
-        #wordListTitle a
+        #wordListTitle
         {
             font-size: 25px; 
             font-weight: bold;
+            text-align: center;
         }
         #addWord-btn, #wordTest-btn
         {
@@ -122,74 +71,91 @@
         #wordList ul li
         {
             background-color: rgb(245, 245, 245);
-            height: 50px;
+            height: 60px;
             margin: 14px;
             box-shadow: 3px 3px 3px gray;
             border-radius: 5px;
             transition: 0.3s;
-            line-height: 50px;
+            line-height: 60px;
             cursor: pointer;
         }
         #wordList ul li:hover
         {
             transform: scale( 1.08 );
         }
-        #wordList ul li span
+        .wordRdColor
         {
-            height: 50px;
+            color: white;
+            height: 60px;
             width: 60px;
+            max-width: 423px;
             display: inline-block;
             text-align: center;
             border-radius: 5px;
             font-weight: bold;
-            color: white;
             overflow: hidden;
+            transition:0.3s
         }
-        
-        @media(min-width:1024px)
+        @media(max-width:467px)
         {
-            #wordList ul li, #wordList ul li span
-            {
-                height: 80px;
-            }
             #wordList ul li span
             {
-                width: 100px;
-                font-size: 24px;
+                width: 100%;
+                overflow: hidden;
             }
-            #wordList ul li
-            {
-                line-height: 80px;
+            .wordMean{
+                display: none;
             }
         }
-
+        .wordMean
+        {
+            display: inline-block;
+            height: 60px;
+            color: gray;
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
     </style>
     <script type="text/javascript">
         window.onload = function () 
         {
-            var array = ["#F2C12E","#F28F16","#F25C05","#1B65A6","#F2C53D","#F2274C"];
-            for(var i = 0; i<14;i++)
+            initStyleSetting ();
+        }
+        function initStyleSetting () {
+            var wordRdColor = document.getElementsByClassName("wordRdColor");
+            var wordMean = document.getElementsByClassName("wordMean");
+            var colorArray = ["#F2C12E","#F28F16","#F25C05","#1B65A6","#F2C53D","#F2274C"];
+        
+            for(var i = 0;i<wordRdColor.length;i++)
             {
-                var colorCode = array[Math.round(Math.random()*(array.length-1))];
-                var idName = "wordRdColor-"+i
-                document.getElementById(idName).style.background = colorCode;
+                var colorCode = colorArray[Math.round(Math.random() * (colorArray.length-1))];
+                wordRdColor[i].style.background = colorCode;
+                if($( window ).width()>450)
+                {
+                    wordMean[i].style.width = $("#wordList ul li").width() - wordRdColor[i].clientWidth + "px"
+                    if((wordRdColor[i].textContent).length>=7)
+                    {
+                        wordRdColor[i].style.width = 80+ (((wordRdColor[i].textContent).length-7)*10)+"px";
+                        wordMean[i].style.width = $("#wordList ul li").width() - (80+ (((wordRdColor[i].textContent).length-7)*10)) + "px"
+                    }
+                }
+                else
+                {
+                    wordMean[i].style.display = "none";
+                }
             }
         }
-        
     </script>
 </head>
 <body>
-    <div class="header">
-        <span class="logo"><a href="#">YAMU</a></span>
-        <div id="right-btns">
-            <button onclick="location.href='./login.login';" class="button-size1 buttons" id="login-btn"wordList>login</button>
-            <button onclick="location.href='./Insertpage.login';" class="button-size1 buttons" id="signin-btn">Sign in</button>
-        </div>
-        </span>
-    </div>
     <div class="section">
+        <div id="wordListTitle">단어장 이름</div>
         <div id="wordListHeader">
-            <span id="wordListTitle"><a>단어장 이름</a></span>
             <div id="right-btns">
                 <button onclick="location.href='#';" class="button-size2 buttons" id="addWord-btn">단어 추가</button>
                 <button onclick="location.href='#';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>
@@ -198,20 +164,20 @@
         <hr>
         <div id="wordList">
             <ul>
-                <li><span id="wordRdColor-0">testadsfsadfasdf</span></li>
-                <li><span id="wordRdColor-1">test</span></li>
-                <li><span id="wordRdColor-2">test</span></li>
-                <li><span id="wordRdColor-3">test</span></li>
-                <li><span id="wordRdColor-4">test</span></li>
-                <li><span id="wordRdColor-5">test</span></li>
-                <li><span id="wordRdColor-6">test</span></li>
-                <li><span id="wordRdColor-7">test</span></li>
-                <li><span id="wordRdColor-8">test</span></li>
-                <li><span id="wordRdColor-9">test</span></li>
-                <li><span id="wordRdColor-10">test</span></li>
-                <li><span id="wordRdColor-11">test</span></li>
-                <li><span id="wordRdColor-12">test</span></li>
-                <li><span id="wordRdColor-13">test</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">color</span><span class="wordMean">색상, 색</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">transform</span><span class="wordMean">변형할 수 있는</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">wordbook</span><span class="wordMean">단어집, 사전, 대본</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">wordbookwordbook</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
+                <li onclick="location.href='#';"><span class="wordRdColor">test</span><span class="wordMean">단asdfasdfasdfdasfsdf어뜻</span></li>
             </ul>
         </div>
     </div>
