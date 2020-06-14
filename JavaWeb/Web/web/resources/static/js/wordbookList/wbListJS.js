@@ -21,7 +21,7 @@ function  notExistData(error)
 }
 
 //값을 가져왔을때 실행
-function whenSuccess(result,e)
+function whenSuccess(result)
 {
     var html = '';
     var count = 0;
