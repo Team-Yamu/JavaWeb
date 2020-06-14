@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+    session.setAttribute("backpage",request.getHeader("referer"));
     if (session.getAttribute("id") != null)
     {
 %>

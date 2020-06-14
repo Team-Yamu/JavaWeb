@@ -36,7 +36,8 @@ public class UserLoginAction implements Action
                 session.setAttribute("id", user.getId());
 
                 forward.setRedirect(true);
-                forward.setPath("/");
+                //이전페이지 이동을 위한 세션을 가져옴
+                forward.setPath((String) session.getAttribute("backpage"));
                 return forward;
             }
             else if (result == 0)

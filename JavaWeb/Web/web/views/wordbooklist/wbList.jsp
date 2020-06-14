@@ -31,9 +31,9 @@
             <button id="closePopupBtn">닫기</button>
             <form id="addWordbook">
                 <p id="wordbookName">이름</p>
-                <input type="text" name="wordbookName">
+                <input autocomplete="off" type="text" name="wordbookName">
                 <p id="wordbookInfo">설명</p>
-                <input type="text" name="info">
+                <input autocomplete="off" type="text" name="info">
                 <input type="button" value="추가" id="addWordbookBtn">
             </form>
         </div>

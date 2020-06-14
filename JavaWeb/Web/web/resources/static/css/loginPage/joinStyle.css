@@ -6,6 +6,7 @@
     border : solid 1.5px gray;
     outline: none;
     font-size: 13px;
+    z-index: 2;
 }
 #inputStyle:hover
 {
