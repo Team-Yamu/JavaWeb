@@ -1,0 +1,131 @@
+{
+    "target": "love",
+    "target_trans": [
+        "사랑하다",
+        "좋아하다",
+        "러브",
+        "애정",
+        "연애"
+    ],
+    "hash": "686f746a95b6f836d7d70567c302c3f9ebb5ee0def3d1220ee9d4e9f34f5e131",
+    "synsets": {
+        "1": {
+            "definition": "a strong positive emotion of regard and affection",
+            "pos": "n",
+            "examples": [
+                "children need a lot of love",
+                "his love for his work"
+            ]
+        },
+        "2": {
+            "definition": "any object of warm affection or devotion",
+            "pos": "n",
+            "examples": [
+                "he has a passion for cock fighting",
+                "the theater was her first love"
+            ]
+        },
+        "3": {
+            "definition": "a beloved person; used as terms of endearment",
+            "pos": "n",
+            "examples": []
+        },
+        "4": {
+            "definition": "a deep feeling of sexual desire and attraction",
+            "pos": "n",
+            "examples": [
+                "she was his first love",
+                "their love left them indifferent to their surroundings"
+            ]
+        },
+        "5": {
+            "definition": "a score of zero in tennis or squash",
+            "pos": "n",
+            "examples": [
+                "it was 40 love"
+            ]
+        },
+        "6": {
+            "definition": "sexual activities (often including sexual intercourse) between two people",
+            "pos": "n",
+            "examples": [
+                "he has a very complicated love life",
+                "his lovemaking disgusted her",
+                "he hadn't had any love in months"
+            ]
+        },
+        "7": {
+            "definition": "have a great affection or liking for",
+            "pos": "v",
+            "examples": [
+                "She loves her boss and works hard for him",
+                "I love French food"
+            ]
+        },
+        "8": {
+            "definition": "get pleasure from",
+            "pos": "v",
+            "examples": [
+                "I love cooking"
+            ]
+        },
+        "9": {
+            "definition": "be enamored or in love with",
+            "pos": "v",
+            "examples": [
+                "She loves her husband deeply"
+            ]
+        },
+        "10": {
+            "definition": "have sexual intercourse with",
+            "pos": "v",
+            "examples": [
+                "Adam knew Eve",
+                "This student sleeps with everyone in her dorm",
+                "Were you ever intimate with this man?"
+            ]
+        },
+        "pages": 10
+    },
+    "synonyms": [
+        "have_sex",
+        "love",
+        "dearest",
+        "erotic_love",
+        "hump",
+        "sexual_love",
+        "lovemaking",
+        "know",
+        "have_intercourse",
+        "bang",
+        "make_love",
+        "enjoy",
+        "sleep_together",
+        "get_it_on",
+        "get_laid",
+        "have_it_away",
+        "honey",
+        "beloved",
+        "love_life",
+        "jazz",
+        "sleep_with",
+        "dear",
+        "passion",
+        "make_out",
+        "have_it_off",
+        "bonk",
+        "do_it",
+        "screw",
+        "roll_in_the_hay",
+        "fuck",
+        "lie_with",
+        "be_intimate",
+        "have_a_go_at_it",
+        "making_love",
+        "bed",
+        "eff"
+    ],
+    "antonyms": [
+        "hate"
+    ]
+}

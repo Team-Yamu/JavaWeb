@@ -21,6 +21,7 @@ public class AddWordAction  implements Action {
         var wordbookBean = new WordbookBean();
 
         boolean dataInsertFlag = true;
+        boolean inWordbookFlg = true;
 
         try {
 
@@ -39,12 +40,24 @@ public class AddWordAction  implements Action {
                 dataInsertFlag = wordListDAO.existWordPage(wordBean);
             }
             try{
+                List WordBeanList = null;
+                WordBeanList = wordListDAO.searchWordList(wordbookBean);
+
                 if(dataInsertFlag)
                 {
-                    wordListDAO.updateWordbook(wordbookBean,wordBean);
+                    for(var item : WordBeanList)
+                    {
+                        if((((WordBean) item).getWordName()).equals(wordBean.getWordName()))
+                        {
+                            inWordbookFlg = false;
+                            break;
+                        }
+                    }
+                    if(inWordbookFlg)
+                    {
+                        wordListDAO.updateWordbook(wordbookBean,wordBean);
+                    }
                 }
-                List WordBeanList = null;
-
                 WordBeanList = wordListDAO.searchWordList(wordbookBean);
                 String jsonData = wordListDAO.selectWordListJson(WordBeanList);
                 response.setCharacterEncoding("utf-8");

@@ -1,9 +1,6 @@
-package com.wordlistpage.action.controller;
+package com.openwordbookPage.action.controller;
 
-import com.wordlistpage.action.svc.AddWordAction;
-import com.wordlistpage.action.svc.SearchWordAction;
-import com.wordlistpage.action.svc.WordListViewAction;
-import com.wordlistpage.action.svc.WordbookVisitCountAction;
+import com.openwordbookPage.action.svc.WordbookListAction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "*.wl")
-public class WordListController extends HttpServlet
+@WebServlet(urlPatterns = "*.ob")
+public class OpenWordbookController extends HttpServlet
 {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -26,18 +23,12 @@ public class WordListController extends HttpServlet
 
         switch (command)
         {
-            // 단어 리스트 접속시
-            case "/wordList.wl":
-                action = (Action) new WordListViewAction();
+            case "/wordbookList.ob":
+                action = (Action) new WordbookListAction();
                 break;
-            case "/searchWordList.wl":
-                action = (Action) new SearchWordAction();
-                break;
-            case "/addWord.wl":
-                action = (Action) new AddWordAction();
-                break;
-            case "/visitCoUnt.wl":
-                action = (Action) new WordbookVisitCountAction();
+
+            case "/openWordbook.ob":
+                forward = new ActionForward(false, "./views/openWordbook/openWordbook.jsp");
                 break;
         }
 

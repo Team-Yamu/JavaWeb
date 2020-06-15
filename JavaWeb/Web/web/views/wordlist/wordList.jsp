@@ -16,6 +16,7 @@
     <script src="/resources/static/js/wordList/wordAddPopupJS.js"></script>
     <script src="/resources/static/js/wordList/searchWordListJS.js"></script>
     <script src="/resources/static/js/wordList/addWordJS.js"></script>
+    <script src="/resources/static/js/wordList/wbVisitCount.js"></script>
     <link href="/resources/static/css/wordList/wordListSkeletonStyle.css" rel="stylesheet" type="text/css">
     <link href="/resources/static/css/wordList/wordListStyle.css" rel="stylesheet" type="text/css">
     <link href="/resources/static/css/wordList/wordAddPopupStyle.css" rel="stylesheet" type="text/css">
@@ -48,6 +49,17 @@
             %>
                     <button class="button-size2 buttons" id="addWord-btn">단어 추가</button>
             <%
+                }
+                else
+                {
+                    if(session.getAttribute("id")!=null)
+                    {
+            %>
+                        <script>
+                            visitCountAjax(<%=wordbookId%>);
+                        </script>
+            <%
+                    }
                 }
             %>
             <button onclick="location.href='#';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>

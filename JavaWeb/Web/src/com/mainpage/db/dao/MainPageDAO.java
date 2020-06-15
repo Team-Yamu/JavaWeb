@@ -33,10 +33,9 @@ public class MainPageDAO
         }
     }
 
-    public List getWordbookBest4()
+    public List getWordbookBest8()
     {
-        String sql = "select id,user_id,name,visit_count from Wordbook order by visit_count desc limit 4;";
-        int count = 0;
+        String sql = "select id,user_id,name,visit_count,info from Wordbook order by visit_count desc limit 8;";
 
         try
         {
@@ -53,6 +52,7 @@ public class MainPageDAO
                 bean.setUser_id(rs.getString("user_id"));
                 bean.setName(rs.getString("name"));
                 bean.setVisit_count(rs.getInt("visit_count"));
+                bean.setInfo(rs.getString("info"));
                 beanList.add(bean);
             }
             return beanList;

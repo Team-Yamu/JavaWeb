@@ -18,7 +18,7 @@ public class MainPageAction implements Action
 
         try
         {
-            List wordbookList = dao.getWordbookBest4();
+            List wordbookList = dao.getWordbookBest8();
 
             request.setAttribute("wordbookList",wordbookList);
 
