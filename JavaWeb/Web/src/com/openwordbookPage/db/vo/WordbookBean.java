@@ -1,21 +1,12 @@
-package com.mainpage.db.vo;
+package com.openwordbookPage.db.vo;
 
-public class WordbookBean
-{
+public class WordbookBean {
     private int id;
     private String user_id;
     private String name;
     private String wordList;
-    private int visit_count;
     private String info;
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
+    private int visit_count;
 
     public int getId() {
         return id;
@@ -47,6 +38,14 @@ public class WordbookBean
 
     public void setWordList(String wordList) {
         this.wordList = wordList;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public int getVisit_count() {

@@ -65,7 +65,7 @@ public class WordListDAO
             // 쿼리 저장
             String sql = "SELECT word " +
                         "FROM Wordbook," +
-                        "JSON_TABLE(concat('[',wordList,']'),'$[*]' COLUMNS(word varchar(30) PATH '$')) AS temp " +
+                        "JSON_TABLE(concat('[',wordList,']'),'$[*]' COLUMNS(word varchar(50) PATH '$')) AS temp " +
                         "where id = ?;";
             // 쿼리 셋팅
             pstmt = con.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class WordListDAO
     {
         String sql = "SELECT word_mean " +
                 "FROM Word, " +
-                "JSON_TABLE(json_data,'$.target_trans[*]' COLUMNS(word_mean varchar(20) PATH '$')) AS temp " +
+                "JSON_TABLE(json_data,'$.target_trans[*]' COLUMNS(word_mean varchar(50) PATH '$')) AS temp " +
                 "where hash = sha2(?,256);";
         List wordMeanList = null;
         try
@@ -324,7 +324,7 @@ public class WordListDAO
     {
         String sql = "SELECT word_mean " +
                 "FROM Word, " +
-                "JSON_TABLE(json_data,'$.target_trans[*]' COLUMNS(word_mean varchar(20) PATH '$')) AS temp " +
+                "JSON_TABLE(json_data,'$.target_trans[*]' COLUMNS(word_mean varchar(50) PATH '$')) AS temp " +
                 "where hash = sha2(?,256);";
         JSONArray jsonArray = new JSONArray();
         int count = 0;
@@ -365,5 +365,23 @@ public class WordListDAO
             this.dbClose();
         }
         return "";
+    }
+    public void visitCount(WordbookBean bean)
+    {
+        String sql = "update Wordbook set visit_count = visit_count+1 where id = ?;";
+        try
+        {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,bean.getId());
+            pstmt.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            this.dbClose();
+        }
     }
 }

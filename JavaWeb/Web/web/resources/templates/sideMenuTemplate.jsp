@@ -13,6 +13,6 @@
         <a href="/" id="home-menu">홈</a>
         <a href="/wordbookList.wb" id="wordbook-menu">단어장</a>
         <a href="#" id="news-menu">뉴스</a>
-        <a href="#" id="openwb-menu">오픈 단어장</a>
+        <a href="/openWordbook.ob" id="openwb-menu">오픈 단어장</a>
     </div>
 </div>

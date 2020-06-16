@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .card
+        {
+            max-width:350px; 
+            height:350px; 
+            position:relative; 
+            margin-right:50px;
+            margin: auto;
+        }
+        .card *
+        {
+            position:absolute; 
+            box-shadow: 0px 0px 5px gray;
+            border-radius: 10px;
+            width:350px; 
+            height:350px; 
+            top:0; 
+            left:0;
+            text-align: center;
+            line-height: 350px;
+        }
+        .front
+        {
+            font-size:40px;
+            font-weight: bold;
+            color:white;
+            background-color:#0283F4;
+            opacity:1;
+        }
+        .back
+        {
+            font-size:24px;
+            background-color:white;
+            transform:rotateY(-180deg);
+            opacity:0;
+        }
+        .cardRotate .front
+        {
+            animation: rotateAni 1s 1; 
+            transform:rotateY(180deg);
+        }
+        .cardRotate .back
+        {
+            animation: backAni 1s 1; 
+            transform:rotateY(0);
+            opacity:1;
+        }
+        .backRotate .front{
+            animation: backAni 1s 1; 
+        }
+        .backRotate .back
+        {
+            animation: rotateAni 1s 1; 
+        }
+
+        @keyframes rotateAni{
+            0%
+            {
+                transform:rotateY(0);
+            }
+            50%
+            {
+                opacity:0;
+            }
+            100%
+            {
+                transform:rotateY(-180deg);
+            }
+        }
+
+        @keyframes backAni{
+            0%{
+                transform:rotateY(180deg);
+            }
+            50%
+            {
+                opacity:1;
+            }
+            100%
+            {
+                transform:rotateY(0deg);
+            }
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+        var flg = true;
+        $(function()
+        {
+            $("#answerCheck").on('click',function(){
+                if(flg == true)
+                {
+                    $(".card").addClass("cardRotate").removeClass("backRotate");
+                    flg = false;
+                }
+                else
+                {
+                    $(".card").addClass("backRotate").removeClass("cardRotate");
+                    flg = true;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="answerCheck">클릭</button>
+    <div class="card card1">
+        <div class="front"><span>ilove</span></div>
+        <div class="back"></div>
+    </div>
+</body>
+</html>

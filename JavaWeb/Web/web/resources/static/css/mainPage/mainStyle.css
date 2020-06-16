@@ -1,0 +1,45 @@
+#body-view
+{
+    max-width: 820px;
+    margin:auto;
+    margin-top : 100px;
+}
+.menu-title
+{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+.menu-title p
+{
+    margin: 0;
+}
+.buttons-middle button:hover
+{
+    background-color: #54affa;
+    transform: scale( 1.08 );
+}
+.buttons-middle button
+{
+    font-weight: initial;
+    box-shadow: 3px 3px 3px rgb(192, 192, 192);
+    transition: 0.5s;
+}
+.more-button
+{
+    width: 68.5px;
+    padding-top:10px;
+    margin: auto;
+}
+.more-button button
+{
+    background-color: #008cff;
+    color: white;
+    padding: 5px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}

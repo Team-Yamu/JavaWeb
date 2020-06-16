@@ -21,6 +21,7 @@ public class AddWordAction  implements Action {
         var wordbookBean = new WordbookBean();
 
         boolean dataInsertFlag = true;
+        boolean inWordbookFlg = true;
 
         try {
 
@@ -30,7 +31,8 @@ public class AddWordAction  implements Action {
             if(!wordListDAO.existWordData(wordBean))
             {
                 ConsoleCommand cmd = new ConsoleCommand();
-                String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py " + wordBean.getWordName()) +" -all";
+                String command = cmd.inputCommand("python ./bin/nltk/main.py " + wordBean.getWordName()) +" -all";
+                //String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py " + wordBean.getWordName()) +" -all";
                 String result = cmd.execCommand(command);
                 wordBean.setJsonData(result);
                 //데이터 베이스에 단어 등록
@@ -39,12 +41,24 @@ public class AddWordAction  implements Action {
                 dataInsertFlag = wordListDAO.existWordPage(wordBean);
             }
             try{
+                List WordBeanList = null;
+                WordBeanList = wordListDAO.searchWordList(wordbookBean);
+
                 if(dataInsertFlag)
                 {
-                    wordListDAO.updateWordbook(wordbookBean,wordBean);
+                    for(var item : WordBeanList)
+                    {
+                        if((((WordBean) item).getWordName()).equals(wordBean.getWordName()))
+                        {
+                            inWordbookFlg = false;
+                            break;
+                        }
+                    }
+                    if(inWordbookFlg)
+                    {
+                        wordListDAO.updateWordbook(wordbookBean,wordBean);
+                    }
                 }
-                List WordBeanList = null;
-
                 WordBeanList = wordListDAO.searchWordList(wordbookBean);
                 String jsonData = wordListDAO.selectWordListJson(WordBeanList);
                 response.setCharacterEncoding("utf-8");

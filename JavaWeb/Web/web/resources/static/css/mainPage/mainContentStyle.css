@@ -1,0 +1,90 @@
+#myGrid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    max-width : 800px;
+    margin:auto;
+}
+.myGrid-item {
+    padding: 15px;
+    text-align: center;
+}
+.myGrid-item .wordbookBtn, .newsBtn
+{
+    padding: 0px;
+    display:inline-block;
+    border-radius:10px;
+    width:150px;
+    height:220px;
+    font-size:18px;
+    color:white;
+    box-shadow: 3px 3px 3px gray;
+    transition: 0.5s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    cursor: pointer;
+    border:none;
+}
+.wbinfo, .newsSubject
+{
+    position: relative;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+    height: 90px;
+    line-height: 90px;
+}
+.wbName
+{
+    height: 90px;
+    padding: 10px;
+    line-height: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.newsImage
+{
+    padding:0;
+    height: 100px;
+    line-height: 100px;
+}
+
+@media(max-width:780px)
+{
+    #myGrid-container {
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+    }
+}
+
+.y-scroll-view
+{
+    white-space:nowrap;
+    overflow-x:scroll;
+}
+
+.y-scroll-view::-webkit-scrollbar {
+    width: 6px;
+    height: 15px;
+}
+.y-scroll-view::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.y-scroll-view::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: rgb(236, 236, 236);
+}
+.y-scroll-view::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+#wordbooks .wordbookBtn:hover,.newsBtn:hover
+{
+    transform: scale( 1.08 );
+}
+.newsBtn
+{
+    background-color: white;
+}

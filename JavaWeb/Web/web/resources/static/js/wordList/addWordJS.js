@@ -25,8 +25,8 @@ function loadingSkeleton()
     var wordRdColor = document.getElementsByClassName("wordRdColor");
     var listItemSize = wordRdColor.length;
     $("#popup").fadeOut(150);
-    $("#wordListItem").css("display","none");
-    $("#wordListItem").fadeIn(500);
+    // $("#wordListItem").css("display","none");
+    // $("#wordListItem").fadeIn(500);
     var html = "";
     for(var i = 0; i<listItemSize+1; i++)
     {

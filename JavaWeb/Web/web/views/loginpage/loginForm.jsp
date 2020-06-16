@@ -28,7 +28,7 @@
         <p>비밀번호</p>
         <input type="password" name="password" class="inputStyle"/>
         <div id="inputButtons">
-            <button href="/Insertpage.login">회원가입</button>
+            <button onclick="location.href='/Insertpage.login'">회원가입</button>
             <button href="javascript:loginform.submit()">로그인</button>
         </div>
     </form>
