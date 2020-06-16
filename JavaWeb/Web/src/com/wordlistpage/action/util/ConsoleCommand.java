@@ -15,8 +15,8 @@ public class ConsoleCommand
     {
         buffer = new StringBuffer();
 
-        buffer.append("cmd.exe ");
-        buffer.append("/c ");
+//        buffer.append("cmd.exe ");
+//        buffer.append("/c ");
         buffer.append(cmd);
 
         return buffer.toString();

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        #cardContainer{
+            max-height:400px;
+            max-width:400px;
+            margin: auto;
+        }
+        #cardContainer .card{
+            height:400px;
+            width:400px;
+            box-shadow: 0px 0px 5px gray;
+            border-radius: 10px;
+            font-size:24px;
+            backface-visibility:hidden;
+            transition:all 1s;
+            text-align:center;
+            line-height: 400px;
+        }
+        #word{
+            background-color:#0283F4;
+            color:white;
+        }
+        #mean{
+            background-color:rgb(255, 255, 255);
+            color:black;
+        }
+        #cardContainer .card:last-child{
+            position:relative;
+            top:-400px;
+            transform:rotateY(180deg);
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+        var flg = true;
+        $(function()
+        {
+            $('#answerCheck').on('click',function()
+            {
+                if(flg)
+                {
+                    $('.card:first-child').css('transform','rotateY(-180deg)');
+                    $('.card:last-child').css('transform','rotateY(0deg)');
+                    flg=false;
+                }
+                else
+                {
+                    $('.card:first-child').css('transform','rotateY(0deg)');
+                    $('.card:last-child').css('transform','rotateY(180deg)');
+                    $('.card:last-child').css('top','-400px');
+                    $('.card:last-child').css('position','relative');
+                    flg=true;
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="cardContainer">
+        <div class="card" id="word">asdfsadf</div>
+        <div class="card" id="mean">PINK</div>
+    </div>
+    <div><button id="answerCheck">정답확인</button></div>
+</body>
+</html>
