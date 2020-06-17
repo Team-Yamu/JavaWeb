@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<head>
+    <title>단어리스트</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+    <style>
+        a{text-decoration-line: none;}
+        li{list-style-type: none;}
+        ul{padding:0;}
+        body{margin:0;}
+        .section
+        {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        #wordListTitle
+        {
+            font-size: 25px; 
+            font-weight: bold;
+            text-align: center;
+        }
+        #addWord-btn, #wordTest-btn
+        {
+            outline: none;
+            background-color: #666666;
+            color: white;
+        }
+        #wordTest-btn
+        {
+            background-color: #ff5858;
+        }
+        #addWord-btn:hover, #wordTest-btn:hover
+        {
+            background-color: #b4b4b4;
+        }
+
+        #addWord-btn:active, #wordTest-btn:active
+        {
+            background-color: #008cff;
+        }
+
+        .button-size2 {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            margin : 4px 0px 0px 5px;
+            cursor: pointer;
+        }
+        #right-btns
+        {
+            float: right;
+        }
+        #wordListHeader
+        {
+            height: 38px;
+            width: 100%;
+            margin: 0px 3px;
+        }
+        hr
+        {
+            margin:7px 10px;
+        }
+        #wordListHeader #right-btns
+        {
+            margin-right: 8px;
+        }
+        #wordList ul li
+        {
+            background-color: rgb(245, 245, 245);
+            height: 60px;
+            margin: 14px;
+            box-shadow: 3px 3px 3px gray;
+            border-radius: 5px;
+            transition: 0.3s;
+            line-height: 60px;
+            cursor: pointer;
+        }
+        #wordList ul li:hover
+        {
+            transform: scale( 1.08 );
+        }
+        .wordRdColor
+        {
+            color: white;
+            height: 60px;
+            width: 60px;
+            max-width: 423px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            overflow: hidden;
+            transition:0.3s
+        }
+        @media(max-width:467px)
+        {
+            #wordList ul li span
+            {
+                width: 100%;
+                overflow: hidden;
+            }
+            .wordMean{
+                display: none;
+            }
+        }
+        .wordMean
+        {
+            display: inline-block;
+            height: 60px;
+            color: gray;
+            width: 100px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+    </style>
+    <style>
+        #popup
+        {
+            display: none;
+            position:fixed; 
+            width: 100%; 
+            height: 100%; 
+            top:0; 
+            left:0; 
+            background:rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        #closePopupBtn
+        {
+            float: right;
+            background-color: rgba(0,0,0,0);
+            border: none;
+            padding:13px;
+            outline: none;
+            cursor: pointer;
+            transition:0.3s
+        }
+        #closePopupBtn:hover
+        {
+            transform: scale( 1.2 );
+        }
+        #popupForm
+        {
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            margin: auto;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 3px 3px 3px gray;
+            margin-top: 70px;
+        }
+        input[type="text"]
+        {
+            padding:7px;
+            width: 90%;
+            border-radius: 5px;
+            border : solid 1.5px gray;
+            outline: none;
+            font-size: 13px;
+        }
+    
+        input[type="button"]
+        {
+            width: 70px;
+            outline: none;
+            background-color: #008cff;
+            color: white;
+            padding: 4px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            margin : 10px 0px 0px 5px;
+            cursor: pointer;
+            float: right;
+        }
+        input[type="button"]:hover
+        {
+            background-color: #a8a8a8;
+        }
+        input[type="button"]:active
+        {
+            background-color: #008afc;
+        }
+        @media(max-width:500px)
+        {
+            #popupForm
+            {
+                width: 80%;
+            }
+        }
+    </style>
+    <style>
+        #wordSampleList
+        {
+            white-space:nowrap;
+            overflow-y:scroll;
+            height: 170px;
+            margin-bottom: 0px;
+        }
+
+        #wordSampleList::-webkit-scrollbar {
+            width: 6px;
+            height: 15px;
+        }
+        #wordSampleList::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        #wordSampleList::-webkit-scrollbar-thumb {
+            border-radius: 7px;
+            background-color: rgb(236, 236, 236);
+        }
+        #wordSampleList::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+        }
+        #wordSampleList li
+        {
+            margin:12px 0px;
+        }
+        #wordSampleList li:hover
+        {
+            color: #008afc;
+            font-weight: bold;
+        }
+        .sampleWord
+        {
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () 
+        {
+            initStyleSetting ();
+        }
+        function initStyleSetting () {
+            var wordRdColor = document.getElementsByClassName("wordRdColor");
+            var wordMean = document.getElementsByClassName("wordMean");
+            var colorArray = ["#F2C12E","#F28F16","#F25C05","#1B65A6","#F2C53D","#F2274C"];
+        
+            for(var i = 0;i<wordRdColor.length;i++)
+            {
+                var colorCode = colorArray[Math.round(Math.random() * (colorArray.length-1))];
+                wordRdColor[i].style.background = colorCode;
+                if($( window ).width()>450)
+                {
+                    wordMean[i].style.width = $("#wordList ul li").width() - wordRdColor[i].clientWidth + "px"
+                    if((wordRdColor[i].textContent).length>=7)
+                    {
+                        wordRdColor[i].style.width = 80+ (((wordRdColor[i].textContent).length-7)*10)+"px";
+                        wordMean[i].style.width = $("#wordList ul li").width() - (80+ (((wordRdColor[i].textContent).length-7)*10)) + "px"
+                    }
+                }
+                else
+                {
+                    wordMean[i].style.display = "none";
+                }
+            }
+        }
+        $(function()
+        {
+            $("#addWord-btn").on("click",function (e)
+            {
+                $("#popup").fadeIn(150); e.preventDefault(); 
+            })
+            $("#closePopupBtn").on("click",function (e)
+            {
+                $("#popup").fadeOut(150); e.preventDefault(); 
+            })
+            $(document).on("click",".sampleWord",function()
+            {
+                $("#searchWord").val($(this).text());
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="popup">
+        <div id="popupForm">
+            <button id="closePopupBtn">닫기</button>
+            <form id="addWordForm">
+                <p id="wordName">검색</p>
+                <input type="text" name="wordName" id="searchWord">
+                <ul id="wordSampleList">
+                    <li class="sampleWord">dsfsdf1</li>
+                    <li class="sampleWord">dsfsdf2</li>
+                    <li class="sampleWord">dsfsdf3</li>
+                    <li class="sampleWord">dsfsdf4</li>
+                    <li class="sampleWord">dsfsdf5</li>
+                    <li class="sampleWord">dsfsdf6</li>
+                    <li class="sampleWord">dsfsdf7</li>
+                    <li class="sampleWord">dsfsdf8</li>
+                </ul>
+                <input type="button" value="추가" id="addWordBtn">
+            </form>
+        </div>
+    </div>
+    <div class="section">
+        <div id="wordListTitle">단어장 이름</div>
+        <div id="wordListHeader">
+            <div id="right-btns">
+                <button onclick="location.href='#';" class="button-size2 buttons" id="addWord-btn">단어 추가</button>
+                <button onclick="location.href='#';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>
+            </div>
+        </div>
+        <hr>
+        <div id="wordList">
+            <ul>
+                <li onclick="location.href='#';"><span class="wordRdColor">color</span><span class="wordMean">색상, 색</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

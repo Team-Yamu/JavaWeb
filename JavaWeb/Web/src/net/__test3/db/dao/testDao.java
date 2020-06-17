@@ -33,6 +33,7 @@ public class testDao
         }
     }
 
+    // 단어 이름과 같은 데이터를 찾습니다
     public testBean existWordData(testBean bean) throws Exception
     {
         String sql = "select json_data from word2 where hash = sha2(?,256)";
@@ -45,7 +46,6 @@ public class testDao
 
             if(rs.next())
             {
-                bean.setJson_data(rs.getString("json_data"));
                 return bean;
             }
         }
@@ -56,6 +56,7 @@ public class testDao
         return null;
     }
 
+    // 데이터 삽입
     public boolean setInsertJsonData(testBean bean) throws Exception
     {
         String sql = "insert into word2(hash,json_data) values(sha2(?,256),?)";
@@ -75,6 +76,7 @@ public class testDao
         return false;
     }
 
+    // DB JSON 파싱
     public List getSelectAllWord() throws Exception
     {
         String sql = "select json_extract(json_data, '$.target') as 'word' from word2;";

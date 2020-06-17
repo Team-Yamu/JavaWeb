@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebAhive">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebAhive</output-path>
+    <root id="archive" name="WebAhive.war">
+      <element id="artifact" artifact-name="Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="json_simple-1.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

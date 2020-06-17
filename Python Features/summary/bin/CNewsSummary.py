@@ -21,7 +21,7 @@ class CNewsPaper3k:
         self._hash = _sha256.hexdigest()
         # HASHING DONE
 
-        self.dictionary = {'hash': self._hash}
+        self.dictionary = {'hash': self._hash, 'title': self.article.title}
 
     def setKeyword(self) -> None:
         self.dictionary['keyword'] = self.article.keywords

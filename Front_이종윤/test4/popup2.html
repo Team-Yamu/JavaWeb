@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #popup
+    {
+        display: none;
+        position:fixed; 
+        width: 100%; 
+        height: 100%; 
+        top:0; 
+        left:0; 
+        background:rgba(0,0,0,0.1);
+    }
+    #addWordbook table
+    {
+        width : 400px;
+        margin: auto;
+        padding : 26px 10px;
+        padding : 0px 10px 0px 10px;
+    }
+    #addWordbookBtn
+    {
+        float: right;
+    }
+    td
+    {
+        padding:5px;
+    }
+
+    td input[type="text"]
+    {
+        padding:7px;
+        width: 240px;
+        border-radius: 5px;
+        border : solid 1.5px gray;
+        outline: none;
+        font-size: 13px;
+    }
+
+    td input[type="text"]:hover
+    {
+        border : solid 1.5px gray;
+    }
+    td input[type="text"]:focus
+    {
+        border : solid 1.5px #41aaff;
+    }
+
+    td input[type="button"]
+    {
+        width: 70px;
+        outline: none;
+        background-color: #008cff;
+        color: white;
+        padding: 4px 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        margin : 0px 0px 0px 5px;
+        cursor: pointer;
+    }
+    td input[type="button"]:hover
+    {
+        background-color: #a8a8a8;
+    }
+    td input[type="button"]:active
+    {
+        background-color: #008afc;
+    }
+    #closePopupBtn
+    {
+        float: right;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        padding:13px;
+        outline: none;
+        cursor: pointer;
+        transition:0.3s
+    }
+    #closePopupBtn:hover
+    {
+        transform: scale( 1.2 );
+    }
+    #popupForm
+    {
+        position:absolute; 
+        width: 430px; 
+        height: 180px; 
+        top:50%; 
+        left:50%; 
+        transform:translate(-50%, -50%); 
+        background:#fff; 
+        border-radius: 10px;
+    }
+    td input[type="button"]
+    {
+        margin-right: 50px;
+    }
+    @media(max-width:1024px)
+    {
+        #popup
+        {
+            display: none;
+            position:fixed; 
+            width: 100%; 
+            height: 100%; 
+            top:0; 
+            left:0; 
+        }
+        #popupForm
+        {
+            position:absolute; 
+            width: 100%; 
+            height: 100%;  
+            background:#fff; 
+            border-radius: 10px;
+        
+        }
+        #addWordbook
+        {
+            margin: auto;
+            width : 350px;
+        }
+
+        #addWordbook table
+        {
+            padding : 26px 10px;
+            padding : 0px 10px 0px 10px;
+            margin:100px 0;
+        }
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(function()
+    {
+        $("#addBtn").on("click",function (e)
+        {
+            $("#popup").fadeIn(150); e.preventDefault(); 
+        })
+        $("#closePopupBtn").on("click",function (e)
+        {
+            $("#popup").fadeOut(150); e.preventDefault(); 
+        })
+    });
+</script>
+
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+
+</head>
+<body>
+    <div class="grid-item"><button id="addBtn">+</button></div>
+    <div id="popup">
+        <div id="popupForm">
+            <button id="closePopupBtn">닫기</button>
+            <form id="addWordbook">
+                <table>
+                    <tr>
+                        <td style="font-size: 13px;">이름 : </td>
+                        <td><input type="text" name="wordbookName"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">설명 : </td>
+                        <td><input type="text" name="info"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="추가" id="addWordbookBtn"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
