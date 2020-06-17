@@ -32,6 +32,7 @@ public class NewsInsertAction implements Action
 
                 var cmd = new ConsoleCommand();
                 // CMD 경로 셋팅: 띄어쓰기 주의
+                // EC2 Conatiner 의 경로인 /bin/bin/summary 로 변경 바람.
                 String command = cmd.inputCommand("cd C:\\Resources\\JavaWeb\\Python Features\\summary && C: && python main.py " + URL + " -all");
                 // CMD 실행, 결과 저장
                 String result = cmd.execCommand(command);

@@ -31,6 +31,8 @@ public class AddWordAction  implements Action {
             if(!wordListDAO.existWordData(wordBean))
             {
                 ConsoleCommand cmd = new ConsoleCommand();
+
+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py
                 String command = cmd.inputCommand("python ./bin/nltk/main.py " + wordBean.getWordName()) +" -all";
                 //String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py " + wordBean.getWordName()) +" -all";
                 String result = cmd.execCommand(command);
