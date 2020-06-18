@@ -16,9 +16,9 @@
     <title>YAMU</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="/resources/static/js/mainPage/mainJS.js"></script>
-    <link href="/resources/static/css/mainPage/mainContentStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/mainPage/mainStyle.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/resources/static/js/mainPage/mainJS.js"></script>
+    <link href="<%=request.getContextPath()%>/resources/static/css/mainPage/mainContentStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/mainPage/mainStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
@@ -29,7 +29,7 @@
             <p>Open Wordbook</p>
         </div>
         <div class="buttons-middle more-button">
-            <button onclick="location.href='/openWordbook.ob'">More</button>
+            <button onclick="location.href='<%=request.getContextPath()%>/openWordbook.ob'">More</button>
         </div>
         <div id="wordbooks" class="y-scroll-view">
             <div id="myGrid-container">
@@ -38,7 +38,7 @@
                     {
                 %>
                         <div class="myGrid-item">
-                            <button onclick="location.href='./wordList.wl?wbId=<%=((WordbookBean) item).getId()%>&wbName=<%=((WordbookBean) item).getName()%>'" class="wordbookBtn">
+                            <button onclick="location.href='<%=request.getContextPath()%>/wordList.wl?wbId=<%=((WordbookBean) item).getId()%>&wbName=<%=((WordbookBean) item).getName()%>'" class="wordbookBtn">
                                 <div class="wbName"><%=((WordbookBean) item).getName()%></div>
                                 <div class="wbinfo">
                                     <%

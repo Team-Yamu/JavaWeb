@@ -1,3 +1,7 @@
+function getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+};
 $(function()
 {
     $("#searchWord").keyup(function ()
@@ -5,7 +9,7 @@ $(function()
         $.ajax
         ({
             type:"post",
-            url:"/searchWordList.wl",
+            url:getContextPath()+"/searchWordList.wl",
             //key : value 방식으로 보냄
             data:$("#addWordForm").serialize(),
             dataType : 'json',

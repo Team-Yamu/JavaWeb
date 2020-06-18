@@ -6,7 +6,7 @@
     {
 %>
         <script>
-            location.href="./login.login";
+            location.href="<%=request.getContextPath()%>/login.login";
         </script>
 <%
     }
@@ -17,10 +17,10 @@
     <title>YAMU</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="/resources/static/js/wordbookList/wbListJS.js"></script>
-    <link href="/resources/static/css/topTemplateStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordbookList/wbListStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordbookList/wbListPopupStyle.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordbookList/wbListJS.js"></script>
+    <link href="<%=request.getContextPath()%>/resources/static/css/topTemplateStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordbookList/wbListStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordbookList/wbListPopupStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/resources/templates/topTemplate.jsp"/>
@@ -31,7 +31,7 @@
             <button id="closePopupBtn">닫기</button>
             <form id="addWordbook">
                 <p id="wordbookName">이름</p>
-                <input autocomplete="off" type="text" name="wordbookName">
+                <input autocomplete="off" type="text" name="wordbookName" id="wbName">
                 <p id="wordbookInfo">설명</p>
                 <input autocomplete="off" type="text" name="info">
                 <input type="button" value="추가" id="addWordbookBtn">
@@ -49,7 +49,7 @@
             {
         %>
                 <div class="grid-item">
-                    <button onclick="location.href='./wordList.wl?wbId=<%=((WordbookBean) wordbookList.get(i)).getId()%>&wbName=<%=((WordbookBean) wordbookList.get(i)).getName()%>'" class="wordbookBtn">
+                    <button onclick="location.href='<%=request.getContextPath()%>/wordList.wl?wbId=<%=((WordbookBean) wordbookList.get(i)).getId()%>&wbName=<%=((WordbookBean) wordbookList.get(i)).getName()%>'" class="wordbookBtn">
                         <%=((WordbookBean) wordbookList.get(i)).getName()%>
                     </button>
                 </div>

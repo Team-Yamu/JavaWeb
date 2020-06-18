@@ -1,0 +1,54 @@
+#searchMyNews-view
+{
+    display: none;
+}
+
+#newsTitle, #newsMainTitle
+{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 30px 0px;
+}
+#newsMainTitle
+{
+    display: none;
+}
+#newsImage img
+{
+    box-shadow: 0px 0px 4px gray;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#newsSummaryTitle
+{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#newsSummary
+{
+    font-size: 20px;
+}
+#moreNews button
+{
+    display: block;
+    background-color: #008cff;
+    color: white;
+    padding: 4px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+    width: 100px;
+    margin: 20px auto;
+    box-shadow: 3px 3px 3px gray;
+    transition: 0.3s;
+}
+#moreNews button:hover
+{
+    background-color: rgb(175, 175, 175);
+}
+#newsMain
+{
+    display: none;
+}

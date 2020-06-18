@@ -31,7 +31,7 @@ public class AddWordAction  implements Action {
             if(!wordListDAO.existWordData(wordBean))
             {
                 ConsoleCommand cmd = new ConsoleCommand();
-                String command = cmd.inputCommand("python ./bin/nltk/main.py " + wordBean.getWordName()) +" -all";
+                String command ="python ./bin/nltk/main.py " + wordBean.getWordName()+" -all";
                 //String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py " + wordBean.getWordName()) +" -all";
                 String result = cmd.execCommand(command);
                 wordBean.setJsonData(result);

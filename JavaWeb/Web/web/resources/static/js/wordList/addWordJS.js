@@ -1,3 +1,8 @@
+function getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+};
+
 $(function()
 {
     $("#addWordBtn").on("click",function ()
@@ -5,7 +10,7 @@ $(function()
         $.ajax
         ({
             type:"post",
-            url:"/addWord.wl",
+            url:getContextPath()+"/addWord.wl",
             //key : value 방식으로 보냄
             data:$("#addWordForm").serialize(),
             dataType : 'json',
@@ -47,7 +52,7 @@ function whenSuccess2(result)
     $("#wordListItem").fadeIn(500);
     var html = '';
     $.each(result, function(index,entry){
-        html += '<li onclick="location.href=\'./word.w?wName='+entry.wordName+'\';">';
+        html += '<li onclick="location.href=\''+getContextPath()+'/word.w?wName='+entry.wordName+'\';">';
         html += '<span class="wordRdColor">'+entry.wordName+'</span>';
         html += '<span class="wordMean">'+entry.wordMean+'</span>';
         html += '</li>';

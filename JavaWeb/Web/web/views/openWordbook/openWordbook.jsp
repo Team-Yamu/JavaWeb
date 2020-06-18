@@ -4,9 +4,9 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="/resources/static/js/openWordbook/openWordbookJS.js"></script>
-    <script src="/resources/static/js/openWordbook/openWordbookListAjaxJS.js"></script>
-    <link href="/resources/static/css/openWordbook/openWordbookStyle.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/resources/static/js/openWordbook/openWordbookJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/openWordbook/openWordbookListAjaxJS.js"></script>
+    <link href="<%=request.getContextPath()%>/resources/static/css/openWordbook/openWordbookStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/resources/templates/topTemplate.jsp"/>

@@ -12,15 +12,15 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="/resources/static/js/wordList/wordListJS.js"></script>
-    <script src="/resources/static/js/wordList/wordAddPopupJS.js"></script>
-    <script src="/resources/static/js/wordList/searchWordListJS.js"></script>
-    <script src="/resources/static/js/wordList/addWordJS.js"></script>
-    <script src="/resources/static/js/wordList/wbVisitCount.js"></script>
-    <link href="/resources/static/css/wordList/wordListSkeletonStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordList/wordListStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordList/wordAddPopupStyle.css" rel="stylesheet" type="text/css">
-    <link href="/resources/static/css/wordList/searchWordListStyle.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordList/wordListJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordList/wordAddPopupJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordList/searchWordListJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordList/addWordJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/wordList/wbVisitCount.js"></script>
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordList/wordListSkeletonStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordList/wordListStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordList/wordAddPopupStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/wordList/searchWordListStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/resources/templates/topTemplate.jsp"/>
@@ -62,7 +62,7 @@
                     }
                 }
             %>
-            <button onclick="location.href='#';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>
+            <button onclick="location.href='<%=request.getContextPath()%>';" class="button-size2 buttons" id="wordTest-btn">단어 시험</button>
         </div>
     </div>
     <hr>

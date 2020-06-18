@@ -5,12 +5,12 @@
 <head>
     <title>Join</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-    <link href="/resources/static/css/loginPage/joinStyle.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/static/css/loginPage/joinStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <jsp:include page="/resources/templates/topTemplate.jsp" flush="false"/>
 <jsp:include page="/resources/templates/sideMenuTemplate.jsp" flush="false"/>
-<form name="InsertUser" action="./Insertuser.login" method="post" id="inputForm">
+<form name="InsertUser" action="<%=request.getContextPath()%>/Insertuser.login" method="post" id="inputForm">
     <p id="joinTitle">회원가입</p>
     <p>아이디</p>
     <input type="text" name="id" class="inputStyle"/>

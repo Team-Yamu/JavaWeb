@@ -28,6 +28,17 @@ public class UserLoginAction implements Action
             user.setPassword(request.getParameter("password"));
             result = userDAO.isUser(user);
 
+            if(user.getId().equals("")||user.getPassword().equals(""))
+            {
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>");
+                out.println("alert('아이디, 비밀번호를 입력해주세요');");
+                out.println("location.href='"+request.getContextPath()+"/login.login';");
+                out.println("</script>");
+                out.close();
+                return null;
+            }
             if (result == 1)
             {
                 System.out.println("로그인 성공");
@@ -48,7 +59,7 @@ public class UserLoginAction implements Action
                 PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('비밀번호가 일치하지 않습니다.');");
-                out.println("location.href='/login.login';");
+                out.println("location.href='"+request.getContextPath()+"/login.login';");
                 out.println("</script>");
                 out.close();
 
@@ -62,7 +73,7 @@ public class UserLoginAction implements Action
                 PrintWriter out = response.getWriter();
                 out.println("<script>");
                 out.println("alert('아이디가 존재하지 않습니다.');");
-                out.println("location.href='/login.login';");
+                out.println("location.href='"+request.getContextPath()+"/login.login';");
                 out.println("</script>");
                 out.close();
 

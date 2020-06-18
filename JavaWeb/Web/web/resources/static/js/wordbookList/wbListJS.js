@@ -1,17 +1,28 @@
+function getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+};
 $(function()
 {
     $("#addWordbookBtn").on("click",function ()
     {
-        $.ajax
-        ({
-            type:"post",
-            url:"/wordbookAdd.wb",
-            //key : value 방식으로 보냄
-            data:$("#addWordbook").serialize(),
-            dataType : 'json',
-            success: whenSuccess,
-            error: notExistData
-        })
+        if($('#wbName').val()=="")
+        {
+            alert("단어장 이름을 입력해 주세요");
+        }
+        else
+        {
+            $.ajax
+            ({
+                type:"post",
+                url: getContextPath()+"/wordbookAdd.wb",
+                //key : value 방식으로 보냄
+                data:$("#addWordbook").serialize(),
+                dataType : 'json',
+                success: whenSuccess,
+                error: notExistData
+            })
+        }
     })
 });
 
@@ -27,7 +38,7 @@ function whenSuccess(result)
     var count = 0;
     $.each(result, function(index,entry){
         html += '<div class="grid-item">';
-        html += '<button onclick="location.href=\'./wordList.wl?wbId='+entry.id+'&wbName='+entry.wordbookName+'\'"';
+        html += '<button onclick="location.href=\''+getContextPath()+'/wordList.wl?wbId='+entry.id+'&wbName='+entry.wordbookName+'\'"';
         html += ' class="wordbookBtn" id="randomColor'+(count++)+'">';
         html += entry.wordbookName + '</button>';
         html += '</div>';
