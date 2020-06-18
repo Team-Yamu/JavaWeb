@@ -6,8 +6,17 @@ public class NewsBean {
     private String visit_count;
     private String title;
     private String summary;
+    private String keyword;
     private String text;
     private String img;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public String getUrl() {
         return url;

@@ -15,19 +15,33 @@ public class SearchNewsAction implements Action
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         var newsBean = new NewsBean();
         var newsDAO = new NewsDAO();
+
+        boolean insertFlg = false;
+
         newsBean.setUrl(request.getParameter("searchNews"));
 
         try {
             ConsoleCommand cmd = new ConsoleCommand();
-            String command = "python ./bin/summary/main.py " + newsBean.getUrl() + " -all";
+            String command = "python3 ./bin/summary/main.py " + newsBean.getUrl() + " -all";
             String result = cmd.execCommand(command);
             newsBean.setJson_data(result);
-            System.out.println(result);
+
+            insertFlg = newsDAO.newsInsert(newsBean);
+
+            if(insertFlg)
+            {
+                String jsonData = newsDAO.newsJSONresult(newsBean);
+                if(jsonData != null)
+                {
+                    response.setCharacterEncoding("utf-8");
+                    response.getWriter().write(jsonData);
+                }
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
-            //newsBean.con.close();
+            newsDAO.dbClose();
         }
         return null;
     }

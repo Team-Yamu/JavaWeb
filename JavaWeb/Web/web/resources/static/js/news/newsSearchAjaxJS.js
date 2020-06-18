@@ -44,12 +44,12 @@ function whenSuccess(result)
     var html = '';
     $.each(result, function(index,entry){
         html += '<div id="newsTitle">'+entry.title+'</div>';
-        html+= '<div id="newsImage"><img src="data:image/png;base64,'+entry.base64_top_img+'"></div>';
+        html+= '<div id="newsImage"><img src="data:image/png;base64,'+entry.image+'"></div>';
         html += '<div id="newsSummaryTitle">요약</div>';
         html += '<div id="newsSummary">'+entry.summary+'</div>';
-        html += '<div id="newsMain"><div id="newsMainTitle">전문</div>';
-        html += entry.text;
-        html += '<div id="moreNews"><button>전문보기</button></div>';
+        html += '<div id="newsMainTitle">전문</div><div id="newsMain">';
+        html += entry.text+'</div>';
+        html += '<div id="moreNews"><button onclick="moreBtn()">전문보기</button></div>';
     });
     $("#searchMyNews-view").html(html);
     $('#search').each(function(){

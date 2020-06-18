@@ -4,8 +4,8 @@
     <title>News</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/static/js/news/newsSearchJS.js"></script>
     <script src="<%=request.getContextPath()%>/resources/static/js/news/newsSearchAjaxJS.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/static/js/news/newsSearchJS.js"></script>
     <link href="<%=request.getContextPath()%>/resources/static/css/news/mainNewsStyle.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/resources/static/css/news/searchNewsStyle.css" rel="stylesheet" type="text/css">
 </head>
