@@ -1,6 +1,6 @@
 FROM tomcat
-ADD ./docker_files/bin/nltk /usr/local/tomcat/bin/bin/nltk
-ADD ./docker_files/bin/summary /usr/local/tomcat/bin/bin/summary
+ADD ./docker_files/bin/nltk /usr/local/tomcat/bin/nltk
+ADD ./docker_files/bin/summary /usr/local/tomcat/bin/summary
 ADD ./docker_files/nltk_data /root/nltk_data
 ADD ./docker_files/main.py /root/main.py
 RUN apt-get update && apt-get full-upgrade -y && apt-get install python3 -y && apt-get install python3-pip -y
