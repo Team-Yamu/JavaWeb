@@ -12,7 +12,7 @@
 %>
         <script>
             alert("로그인이 되어있지 않습니다");
-            location.href="/login.login";
+            location.href="<%=request.getContextPath()%>/login.login";
         </script>
 <%
     }
@@ -25,6 +25,6 @@
 <body>
 로그인 완료 <br>
 아이디: <%=id%> <br>
-<a href="/logoutProcess.login">로그아웃</a>
+<a href="<%=request.getContextPath()%>/logoutProcess.login">로그아웃</a>
 </body>
 </html>

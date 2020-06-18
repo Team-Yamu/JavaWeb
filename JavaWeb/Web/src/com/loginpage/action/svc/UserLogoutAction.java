@@ -23,7 +23,7 @@ public class UserLogoutAction implements Action
             System.out.println("로그아웃 성공");
 
             forward.setRedirect(true);
-            forward.setPath("/login.login");
+            forward.setPath("./login.login");
             return forward;
         }
         catch (Exception ex)

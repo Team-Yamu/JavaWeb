@@ -28,7 +28,7 @@ public class OpenWordbookController extends HttpServlet
                 break;
 
             case "/openWordbook.ob":
-                forward = new ActionForward(false, "./views/openWordbook/openWordbook.jsp");
+                forward = new ActionForward(false, "/views/openWordbook/openWordbook.jsp");
                 break;
         }
 

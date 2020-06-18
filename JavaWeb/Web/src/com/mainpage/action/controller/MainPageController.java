@@ -2,57 +2,69 @@ package com.mainpage.action.controller;
 
 import com.mainpage.action.svc.MainPageAction;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MainPageController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet
+@WebServlet(urlPatterns = "")
+public class MainPageController extends HttpServlet
 {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String RequestURI = request.getRequestURI();
+        String RequestURL = request.getRequestURI();
         String contextPath = request.getContextPath();
-        String command = RequestURI.substring(contextPath.length());
+        String command = RequestURL.substring(contextPath.length());
 
         ActionForward forward = null;
         Action action = null;
 
-        if(command.equals("/"))
+        switch (command)
         {
-            action = (Action) new MainPageAction();
-            try
-            {
-                forward = action.execute(request,response);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+            case "/":
+                action = (Action) new MainPageAction();
+                break;
         }
 
-        if(forward != null)
+        try
         {
-            if(forward.isRedirect())
+            // 실행 action이 있다면
+            if (action != null)
+                forward = action.execute(request, response);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            // 이동 페이지가 있다면
+            if (forward != null)
             {
-                response.sendRedirect(forward.getPath());
-            }
-            else
-            {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-                dispatcher.forward(request,response);
+                if (forward.isRedirect())
+                {
+                    // Redirect 이동: URL주소가 변경되며, request와 response가 공유되지 않습니다
+                    response.sendRedirect(forward.getPath());
+                }
+                else
+                {
+                    // Forward 이동: URL주소가 유지되며, request와 response가 공유됨
+                    var dispatchar = request.getRequestDispatcher(forward.getPath());
+                    dispatchar.forward(request, response);
+                }
             }
         }
     }
 
-    protected  void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        doProcess(request,response);
+        this.doProcess(request, response);
     }
 
-    protected  void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        doProcess(request,response);
+        this.doProcess(request, response);
     }
 }

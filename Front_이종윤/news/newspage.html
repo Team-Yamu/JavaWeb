@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <style>
+        #body-view
+        {
+            max-width: 700px;
+            margin:100px auto 30px auto;
+            padding: 15px;
+        }
+        #title
+        {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+        input[type="text"]
+        {
+            padding:15px;
+            width: 90%;
+            border-radius: 15px;
+            border : solid 1.5px gray;
+            outline: none;
+            font-size: 14px;
+        }
+        input[type="text"]:hover, input[type="text"]:focus
+        {
+            border : solid 1.5px #008afc;
+        }
+        #searchForm form
+        {
+            padding-left: 6%;
+            max-width: 600px;
+            margin: auto;
+        }
+        button
+        {
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        #searchNewsBtn button
+        {
+            display: block;
+            background-color: #008cff;
+            color: white;
+            padding: 4px 20px;
+            font-size: 20px;
+            border-radius: 15px;
+            width: 100px;
+            margin: 20px auto;
+            box-shadow: 3px 3px 3px gray;
+            transition: 0.3s;
+        }
+        #searchNewsBtn button:hover
+        {
+            transform: scale( 1.03 );
+        }
+    </style>
+    <style>
+        #popup
+        {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: rgba(126, 126, 126, 0.5);
+
+            text-align: center;
+            transition: 0.7s;
+        }
+        #popup p a
+        {
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+            line-height: 600px;
+        }
+
+        #searchMyNews-view
+        {
+            overflow:hidden;
+            height:auto;
+            max-width: 700px;
+            margin:30px auto 100px auto;
+            padding: 15px;
+            box-shadow: 0px 0px 4px gray;
+        }
+    </style>
+    <style>
+        #newsTitle, #newsMainTitle
+        {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 30px 0px;
+        }
+        #newsMainTitle
+        {
+            display: none;
+        }
+        #newsImage img
+        {
+            box-shadow: 0px 0px 4px gray;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        #newsSummaryTitle
+        {
+            font-size: 25px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #newsSummary
+        {
+            font-size: 20px;
+        }
+        #moreNews button
+        {
+            display: block;
+            background-color: #008cff;
+            color: white;
+            padding: 4px 15px;
+            font-size: 16px;
+            border-radius: 15px;
+            width: 100px;
+            margin: 20px auto;
+            box-shadow: 3px 3px 3px gray;
+            transition: 0.3s;
+        }
+        #moreNews button:hover
+        {
+            background-color: rgb(175, 175, 175);
+        }
+        #newsMain
+        {
+            display: none;
+        }
+    </style>
+    <style>
+        [word]
+        {
+            cursor: pointer;
+        }
+        [word]:hover
+        {
+            font-weight: bold;
+        }
+        [word]:hover {
+            position: relative;
+        }
+        
+        [word]:hover:after {
+            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.8);
+        
+            -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+            -moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+            box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+        
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        
+            color: #FFFFFF;
+            font-size: 12px;
+            content: attr(word);
+        
+            margin-bottom: 10px;
+            top: 100%;
+            left: 0;    
+            padding: 7px 12px;
+            position: absolute;
+            width: auto;
+            min-width: 50px;
+            max-width: 300px;
+            word-wrap: break-word;
+        
+            z-index: 10;
+        }
+    </style>
+    <script>
+        $(function()
+        {
+            $('#moreNews button').on('click',function()
+            {
+                if($(this).text() == "닫기")
+                {
+                    $('#newsMainTitle').css('display','none');
+                    $('#newsMain').fadeOut(200);
+                    $(this).text('전문보기');
+                }
+                else
+                {
+                    $('#newsMainTitle').css('display','block');
+                    $('#newsMain').fadeIn(200);
+                    $(this).text('닫기');
+                }
+
+                var newsMain = (" "+$('#newsMain').text()).split(" ");
+                var newsJoin = newsMain.join("</span> <span class='wordMean' word='123'>");
+                    newsJoin = newsJoin.substring(8) + "</span>";
+                    $('#newsMain').html(newsJoin);
+            });
+            $('.wordMean').hover(function()
+            {
+                console.log("dsafsd");
+                console.log($(this).attr('word'));
+                $(this).attr('word',"sibal");
+            });
+        })
+        $(function()
+        {
+            $('#searchNewsBtn button').on('click',function()
+            {
+                $('#popup').fadeIn(200);
+                StartClock();
+            })
+            $('#popup').on('click',function()
+            {
+                StopClock();
+                $('#popup').fadeOut(200);
+            })
+        })
+        function StartClock() {
+            loading();
+            timerId = setInterval(loading, 1000);
+        }
+        function loading() {
+            $('#popup p a').animate({marginLeft: '15px'}, 700); 
+            $('#popup p a').animate({marginLeft: '0px'}, 700); 
+        }
+        function StopClock() {
+            if(timerId != null) {
+        
+                clearInterval(timerId);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="popup">
+        <p><a>Y</a><a>A</a><a>M</a><a>U</a></p>
+    </div>
+    <div id="body-view">
+        <div id="title">
+            <p>News</p>
+        </div>
+        <div id="searchForm">
+            <form>
+                <input hidden="hidden">
+                <input type="text" autocomplete="off" name="searchNews" id="searchNews" placeholder="뉴스 URL을 입력해주세요.">
+            </form>
+        </div>
+        <div id="searchNewsBtn"><button>검색</button></div>
+    </div>
+    <div id="searchMyNews-view">
+        <div id="newsTitle">Glasgow Warriors player coach Petrus du Plessis has volunteered to work for the NHS as a physio during coronavirus pandemic.</div>
+        <div id="newsImage"><img src="data:image/png;base64,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" width="100%"></div>
+        <div id="newsSummaryTitle">요약</div>
+        <div id="newsSummary">
+            Petrus du Plessis won three <span word = "단어임단어임단어임단어임단어임단어임단어임단어임단어임단어임단어임단어임단어임단어임">Premiership</span> titles with SaracensDuring a playing career as a tighthead prop who helped Saracens win three Premiership titles, there are countless times in which South African rugby player Petrus du Plessis needed a physio. Now du Plessis, a player-coach at Glasgow Warriors, is using his own skills as a qualified physio to help the UK's National Health Service battle the coronavirus pandemic. The Glasgow prop specialises in respiratory physio and he has been working with the NHS Ayreshire and Arran trust on a Neurology ward. "It's massively important that we don't just sit on our hands," du Plessis told BBC Sport Africa. Du Plessis explained the exact ways that physio can be helpful in aiding patients struggling with the virus.
+        </div>
+        <div id="newsMainTitle">전문</div>
+        <div id="newsMain">
+            Petrus du Plessis won three <span word = "단어임">Premiership</span> titles with SaracensDuring a playing career as a tighthead prop who helped Saracens win three Premiership titles, there are countless times in which South African rugby player Petrus du Plessis needed a physio. Now du Plessis, a player-coach at Glasgow Warriors, is using his own skills as a qualified physio to help the UK's National Health Service battle the coronavirus pandemic.The Glasgow prop specialises in respiratory physio and he has been working with the NHS Ayreshire and Arran trust on a Neurology ward."It's massively important that we don't just sit on our hands," du Plessis told BBC Sport Africa."We get out there and we help because I've got a set of skills at home. I said this to some of the people at the NHS when they ask me why I came back. And I said it's not about me and I'm going back, it's more about getting hands on deck, helping out wherever we can.""I might not be the most important [person] in there but I fill some of the roles from behind and I get stuck in and I've got that patient contact so that we help everybody get back on their feet."Du Plessis explained the exact ways that physio can be helpful in aiding patients struggling with the virus."In physio terms, we would do respiratory physio to help assist with getting all the nasties in your lungs through certain techniques that we do," he said."We listen to your chest like your doctors and nurses do as well. We find out through listening to your chest, where some of the nasties and secretions is in your chest and how we can then help or assist to get rid of it."You eventually cough it up and your lungs can heal."It has been 12 years since Du Plessis last worked for the NHS.After facing difficulties finding a job in physio, he decided to dedicate himself to a career in rugby.But despite this, his passion for physiotherapy has always been there."When I did my degree, I did my dissertation on respiratory because I thought that's a good way of using your skills as well so the passion for physio was always there because there's so many different directions that you can go into."Most physios, young people out there who want to become a physiotherapist look at it from a sporting point of view. I did - I looked at it from a sporting point of view, it looked like a real cool job."But after I went into the hospital working as an assistant, I realised pretty quickly that there's more to physio than just a sports physio."'Three cheers for the NHS'Du Plessis' career in the UK saw him play for Nottingham, Saracens and London Irish before moving to Glasgow in 2018."I've always kept my registration, always kept my hand in physiotherapy in the public domain whether it's seeing someone for a knee injury, ankle or spinal injury, I ended up doing a lot on the side; acupuncture and I became then specialising in neck strengthening which is what I do at the moment for Glasgow Warriors."So that's 15 years in a row where I just kept my hand into physio and it's something I'm quite passionate about still, so now it's back at the NHS."Despite this, Du Plessis admits there have been challenges."I had to open the textbooks again and do a lot of research. Back in 2009, the internet was in its infancy when it comes to physio so now we are able to learn very quickly online and get yourselves out there. I had to study to make sure I was up to scratch and things changes but within a week or so you find your feet and you're off.The South Africa-born prop is on a short-term contract working in a Neurology ward until the Covid-19 pandemic calms down.His return to the NHS and physiotherapy full-time may be temporary, but it has allowed du Plessis to see what he thinks of as the wonder of the health service."I would never consider myself as a hero like everybody is saying, but there are people in the NHS that I could vouch for and say they are real frontline, they're the pioneers, they're the hardest working."Some of the nurses, doctors, physios; I'm just naming three but all of them whatever their job is. Even the caterers, even the staff that helps the wards function, there's too many mention they all work together so well so big three cheers for the NHS."</div>
+        <div id="moreNews"><button>전문보기</button></div>
+    </div>
+</body>
+</html>
