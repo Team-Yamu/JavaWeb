@@ -22,7 +22,8 @@ public class SearchNewsAction implements Action
 
         try {
             ConsoleCommand cmd = new ConsoleCommand();
-            String command = "python3 ./bin/summary/main.py " + newsBean.getUrl() + " -all";
+            // String command = "python3 ./bin/summary/main.py " + newsBean.getUrl() + " -all";
+            String command = cmd.inputCommand("cd C:\\Resources\\JavaWeb\\Python Features\\summary && python main.py " + newsBean.getUrl() + " -all");
             String result = cmd.execCommand(command);
             newsBean.setJson_data(result);
 

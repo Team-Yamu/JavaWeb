@@ -33,8 +33,10 @@ public class AddWordAction  implements Action {
                 ConsoleCommand cmd = new ConsoleCommand();
 
                 // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py
-                String command = cmd.inputCommand("python3 ./bin/nltk/main.py " + wordBean.getWordName() +" -all");
+                // String command = cmd.inputCommand("python3 ./bin/nltk/main.py " + wordBean.getWordName() +" -all");
                 //String command = cmd.inputCommand(" cd D:\\GitHubRepo\\YAMU2020\\JavaWeb\\Python Features\\nltk && d: && python main.py " + wordBean.getWordName()) +" -all";
+                String command = cmd.inputCommand("cd C:\\Resources\\JavaWeb\\Python Features\\nltk && python main.py " + wordBean.getWordName() + " -all");
+
                 String result = cmd.execCommand(command);
                 wordBean.setJsonData(result);
                 //데이터 베이스에 단어 등록

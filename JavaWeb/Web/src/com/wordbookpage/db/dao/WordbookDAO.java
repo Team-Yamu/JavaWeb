@@ -151,7 +151,7 @@ public class WordbookDAO
         }
         catch (Exception ex)
         {
-            System.out.println("setWordbook 에러: " + ex);
+            System.out.println("existWordbookName 에러: " + ex);
         }
         finally
         {
@@ -180,7 +180,7 @@ public class WordbookDAO
         }
         catch (Exception ex)
         {
-            System.out.println("setWordbook 에러: " + ex);
+            System.out.println("insertWordbook 에러: " + ex);
         }
         finally
         {

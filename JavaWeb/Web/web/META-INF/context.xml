@@ -1,4 +1,5 @@
 <Context>
+    <!--
     <Resource
             name="WordBookWeb"
             auth="Container"
@@ -9,4 +10,16 @@
             url = "jdbc:mysql://database-1.cuetkmoisuln.ap-northeast-2.rds.amazonaws.com:3306/WordBookWeb?serverTimezone=UTC"
             maxActive = "500"
             maxIdle="100"/>
+    -->
+    <Resource
+            name="WordBookWeb"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="root"
+            password="Loveyou1!"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/jsp_WordBookWeb?serverTimezone=UTC"
+            maxActive="20"
+            maxIdle="10"
+    />
 </Context>
